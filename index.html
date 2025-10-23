@@ -3,30 +3,24 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <!-- Colores del tema y barra del navegador (tema claro) -->
   <meta name="theme-color" content="#0f2e3c"/>
   <title>LexDigital · Asesoría Legal</title>
 
-  <!-- Estilos (ya con fondo blanco en styles.css) -->
   <link rel="stylesheet" href="styles.css"/>
 
-  <!-- PWA: manifest con icon-192 y icon-512 -->
+  <!-- PWA -->
   <link rel="manifest" href="manifest.json" />
-
-  <!-- Íconos para navegador y iOS -->
   <link rel="icon" type="image/png" href="assets/icon-192.png" />
   <link rel="apple-touch-icon" href="assets/icon-192.png" />
 
   <style>
-    /* Estilos específicos para las pantallas de tu mockup */
+    /* Estilos de la pantalla de acceso (mockup) */
     .center{
       display:flex; flex-direction:column; align-items:center; justify-content:center;
       gap:18px; padding:24px; text-align:center;
     }
     .menu-card{ background:#fff; border:1px solid var(--border); border-radius:24px; padding:18px; width:100%; max-width:520px; box-shadow: var(--shadow); }
     .logo-big{ width:160px; height:160px; object-fit:contain }
-    .title-app{ font-size:2rem; font-weight:800; line-height:1.1; margin-top:8px }
-    .subtitle{ color:var(--muted) }
     .btn-outline{
       display:flex; align-items:center; justify-content:center;
       width:100%; padding:14px 16px; border-radius:999px; font-weight:700;
@@ -35,13 +29,6 @@
     .btn-outline:hover{ filter:brightness(0.96) }
     .stack{ display:grid; gap:14px }
     .stack .btn-outline{ font-size:1.05rem }
-    .menu-header{
-      display:flex; flex-direction:column; align-items:center; gap:10px; margin-bottom:10px
-    }
-    .avatar{
-      width:90px; height:90px; border-radius:999px; background:#e9eef5; display:grid; place-items:center;
-      border:1px solid var(--border); font-size:2rem; color:#506070;
-    }
     /* Ocultamos tabbar para esta demo tipo ventanas */
     #tabbar{ display:none !important }
   </style>
@@ -49,41 +36,33 @@
 <body>
   <div class="container">
 
-    <!-- PANTALLA 1: ACCESO (mockup 2) -->
+    <!-- PANTALLA 1: ACCESO (solo LOGO + 3 botones) -->
     <section id="acceso" class="section active">
       <div class="center">
-        <!-- Logo grande -->
+        <!-- LOGO (no quitar) -->
         <img class="logo-big" src="assets/logo.png" alt="LexDigital logo">
-        <!-- Marca con colores del logo -->
-        <div class="title-app">
-          <span style="color:#0f2e3c">Lex</span><span style="color:#2fb6aa">Digital</span>
-        </div>
 
         <div class="menu-card">
           <div class="stack">
             <button class="btn-outline" id="btn-login">Ya tengo una cuenta</button>
             <button class="btn-outline" id="btn-register">Registrarme</button>
+            <button class="btn-outline" id="btn-guest">Entrar como invitado</button>
           </div>
         </div>
-        <small class="subtitle">Demo: no se envían datos reales</small>
       </div>
     </section>
 
-    <!-- PANTALLA 2: MENÚ PRINCIPAL (mockup 1) -->
+    <!-- PANTALLA 2: MENÚ PRINCIPAL -->
     <section id="menu" class="section">
-      <div class="center">
-        <div class="menu-header">
-          <div class="avatar">👤</div>
-          <div class="title-app">Abogado<br/>LexDigital</div>
-        </div>
-
-        <div class="menu-card">
-          <div class="stack">
-            <a class="btn-outline" href="#consultas" data-goto="consultas">Mi Abogado Legal</a>
-            <a class="btn-outline" href="#plantillas" data-goto="plantillas">Contratos y Planillas</a>
-            <a class="btn-outline" href="#cursos" data-goto="cursos">Cursos Legales</a>
-            <a class="btn-outline" href="#planes" data-goto="planes">Planes y Precios</a>
-          </div>
+      <div class="card" style="text-align:center">
+        <h1>Abogado LexDigital</h1>
+      </div>
+      <div class="menu-card" style="margin:16px auto; max-width:520px">
+        <div class="stack">
+          <a class="btn-outline" href="#consultas" data-goto="consultas">Mi Abogado Legal</a>
+          <a class="btn-outline" href="#plantillas" data-goto="plantillas">Contratos y Planillas</a>
+          <a class="btn-outline" href="#cursos" data-goto="cursos">Cursos Legales</a>
+          <a class="btn-outline" href="#planes" data-goto="planes">Planes y Precios</a>
         </div>
       </div>
     </section>
@@ -126,10 +105,9 @@
     <section id="plantillas" class="section">
       <div class="card">
         <h1>Contratos y Planillas</h1>
-        <p class="subtitle">Demo de contratos (agrega más luego).</p>
         <div class="grid cols-2">
-          <div class="card"><b>Arrendamiento</b><p class="subtitle">Alquiler de inmueble</p></div>
-          <div class="card"><b>Compraventa</b><p class="subtitle">Bien mueble</p></div>
+          <div class="card"><b>Arrendamiento</b><p class="muted">Alquiler de inmueble</p></div>
+          <div class="card"><b>Compraventa</b><p class="muted">Bien mueble</p></div>
         </div>
       </div>
     </section>
@@ -138,7 +116,7 @@
     <section id="cursos" class="section">
       <div class="card">
         <h1>Cursos legales</h1>
-        <p class="subtitle">Próximamente: Derechos laborales, familiares y empresariales.</p>
+        <p class="muted">Próximamente.</p>
       </div>
     </section>
 
@@ -148,19 +126,13 @@
         <h1>Planes y precios</h1>
         <div class="grid cols-3">
           <div class="card">
-            <h2>Free</h2>
-            <p class="subtitle">Chatbot y plantillas básicas.</p>
-            <button class="btn">Elegir</button>
+            <h2>Free</h2><p class="muted">Chatbot y plantillas básicas.</p><button class="btn">Elegir</button>
           </div>
           <div class="card">
-            <h2>Pro</h2>
-            <p class="subtitle">Consultas priorizadas y plantillas pro.</p>
-            <button class="btn primary">Elegir</button>
+            <h2>Pro</h2><p class="muted">Consultas priorizadas y plantillas pro.</p><button class="btn primary">Elegir</button>
           </div>
           <div class="card">
-            <h2>Business</h2>
-            <p class="subtitle">Soporte a PYMES y gestión de casos.</p>
-            <button class="btn">Elegir</button>
+            <h2>Business</h2><p class="muted">Soporte a PYMES y gestión de casos.</p><button class="btn">Elegir</button>
           </div>
         </div>
       </div>
@@ -168,19 +140,41 @@
 
   </div>
 
-  <!-- Tabbar oculta en esta demo tipo ventanas -->
+  <!-- Tabbar oculta (modo ventanas) -->
   <nav id="tabbar" class="tabbar" style="display:none">
     <a class="tab active" href="#menu" data-target="menu">Menú</a>
     <a class="tab" href="#consultas" data-target="consultas">Consultas</a>
     <a class="tab" href="#plantillas" data-target="plantillas">Plantillas</a>
   </nav>
 
-  <div id="toast" class="toast"></div>
-
-  <!-- Lógica -->
+  <!-- Script principal -->
   <script src="app.js"></script>
 
-  <!-- Service Worker para PWA -->
+  <!-- Fallback: si app.js estuviera en caché, igual navega -->
+  <script>
+    (function(){
+      const sections = document.querySelectorAll('.section');
+      function show(id){
+        sections.forEach(s => s.classList.toggle('active', s.id === id));
+        if (location.hash.replace('#','') !== id) location.hash = id;
+      }
+      // botones de acceso
+      ['btn-login','btn-register','btn-guest'].forEach(id=>{
+        document.getElementById(id)?.addEventListener('click', ()=> show('menu'));
+      });
+      // enlaces del menú
+      document.querySelectorAll('[data-goto]').forEach(a=>{
+        a.addEventListener('click',(e)=>{ e.preventDefault(); show(a.getAttribute('data-goto')); });
+      });
+      // hash back
+      window.addEventListener('hashchange', ()=>{
+        const id = location.hash?.replace('#','') || 'acceso';
+        if (document.getElementById(id)) show(id);
+      });
+    })();
+  </script>
+
+  <!-- Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
@@ -188,5 +182,3 @@
   </script>
 </body>
 </html>
-
-
