@@ -3,28 +3,34 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="theme-color" content="#1e88e5"/>
+  <!-- Colores del tema claro + color de barra del navegador -->
+  <meta name="theme-color" content="#0f2e3c"/>
   <title>LexDigital · Asesoría Legal</title>
+
+  <!-- Estilos (ya pasaste a fondo blanco en styles.css) -->
   <link rel="stylesheet" href="styles.css"/>
+
+  <!-- PWA: manifest con icon-192.png e icon-512.png -->
   <link rel="manifest" href="manifest.json" />
+
   <style>
-    /* Mini retoques visuales sin tocar tu CSS base */
+    /* Pequeños retoques visuales */
     .hero-title{font-size:1.8rem;font-weight:800;margin:2px 0 6px}
     .muted{color:var(--muted)}
-    .pill{display:inline-flex;gap:6px;align-items:center;border:1px solid rgba(255,255,255,.12);
-      padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.04);font-size:.85rem}
+    .pill{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--border);
+      padding:6px 10px;border-radius:999px;background:#fff;font-size:.85rem}
     .benefits{display:grid;gap:8px;margin-top:8px}
     .benefits .item{display:flex;gap:10px;align-items:center}
     .benefits .item svg{width:18px;height:18px;opacity:.9}
     .topbar{display:none;justify-content:space-between;align-items:center;margin:0 0 10px}
     .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:90px;padding:10px 14px;border-radius:10px;
-      background:rgba(15,180,100,.12);border:1px solid rgba(15,180,100,.25);color:#c9f5de;font-weight:600;display:none;z-index:60}
+      background:#e8fff4;border:1px solid #b6f0cf;color:#05603a;font-weight:700;display:none;z-index:60}
   </style>
 </head>
 <body>
   <div class="container">
 
-    <!-- TOPBAR (aparece cuando se inicia sesión o como invitado) -->
+    <!-- TOPBAR (aparece al entrar) -->
     <div id="topbar" class="topbar">
       <div class="pill">
         <svg viewBox="0 0 24 24" fill="none"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm7 9a7 7 0 0 0-14 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -37,7 +43,8 @@
     <section id="acceso" class="section active">
       <div class="card">
         <div class="header" style="padding:0 0 8px">
-          <img src="assets/logo.svg" alt="LexDigital logo">
+          <!-- Usa TU logo PNG -->
+          <img src="assets/logo.png" alt="LexDigital logo">
           <div>
             <div class="brand">LexDigital</div>
             <small class="muted">Asesoría legal online</small>
@@ -159,9 +166,10 @@
   <!-- Toast -->
   <div id="toast" class="toast"></div>
 
+  <!-- Lógica -->
   <script src="app.js"></script>
 
-  <!-- SW para PWA -->
+  <!-- Service Worker para PWA -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -171,3 +179,4 @@
   </script>
 </body>
 </html>
+
