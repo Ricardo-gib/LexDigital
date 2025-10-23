@@ -3,109 +3,88 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <!-- Colores del tema claro + color de barra del navegador -->
+  <!-- Colores del tema y barra del navegador (tema claro) -->
   <meta name="theme-color" content="#0f2e3c"/>
   <title>LexDigital · Asesoría Legal</title>
 
-  <!-- Estilos (ya pasaste a fondo blanco en styles.css) -->
+  <!-- Estilos (ya con fondo blanco en styles.css) -->
   <link rel="stylesheet" href="styles.css"/>
 
-  <!-- PWA: manifest con icon-192.png e icon-512.png -->
+  <!-- PWA: manifest con icon-192 y icon-512 -->
   <link rel="manifest" href="manifest.json" />
 
+  <!-- Íconos para navegador y iOS -->
+  <link rel="icon" type="image/png" href="assets/icon-192.png" />
+  <link rel="apple-touch-icon" href="assets/icon-192.png" />
+
   <style>
-    /* Pequeños retoques visuales */
-    .hero-title{font-size:1.8rem;font-weight:800;margin:2px 0 6px}
-    .muted{color:var(--muted)}
-    .pill{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--border);
-      padding:6px 10px;border-radius:999px;background:#fff;font-size:.85rem}
-    .benefits{display:grid;gap:8px;margin-top:8px}
-    .benefits .item{display:flex;gap:10px;align-items:center}
-    .benefits .item svg{width:18px;height:18px;opacity:.9}
-    .topbar{display:none;justify-content:space-between;align-items:center;margin:0 0 10px}
-    .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:90px;padding:10px 14px;border-radius:10px;
-      background:#e8fff4;border:1px solid #b6f0cf;color:#05603a;font-weight:700;display:none;z-index:60}
+    /* Estilos específicos para las pantallas de tu mockup */
+    .center{
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:18px; padding:24px; text-align:center;
+    }
+    .menu-card{ background:#fff; border:1px solid var(--border); border-radius:24px; padding:18px; width:100%; max-width:520px; box-shadow: var(--shadow); }
+    .logo-big{ width:160px; height:160px; object-fit:contain }
+    .title-app{ font-size:2rem; font-weight:800; line-height:1.1; margin-top:8px }
+    .subtitle{ color:var(--muted) }
+    .btn-outline{
+      display:flex; align-items:center; justify-content:center;
+      width:100%; padding:14px 16px; border-radius:999px; font-weight:700;
+      background:#fff; border:2px solid #1f2937; color:#1f2937; text-decoration:none;
+    }
+    .btn-outline:hover{ filter:brightness(0.96) }
+    .stack{ display:grid; gap:14px }
+    .stack .btn-outline{ font-size:1.05rem }
+    .menu-header{
+      display:flex; flex-direction:column; align-items:center; gap:10px; margin-bottom:10px
+    }
+    .avatar{
+      width:90px; height:90px; border-radius:999px; background:#e9eef5; display:grid; place-items:center;
+      border:1px solid var(--border); font-size:2rem; color:#506070;
+    }
+    /* Ocultamos tabbar para esta demo tipo ventanas */
+    #tabbar{ display:none !important }
   </style>
 </head>
 <body>
   <div class="container">
 
-    <!-- TOPBAR (aparece al entrar) -->
-    <div id="topbar" class="topbar">
-      <div class="pill">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm7 9a7 7 0 0 0-14 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-        <span id="hello">Hola, invitado</span>
-      </div>
-      <button id="btn-logout" class="btn">Cerrar sesión</button>
-    </div>
-
-    <!-- ACCESO -->
+    <!-- PANTALLA 1: ACCESO (mockup 2) -->
     <section id="acceso" class="section active">
-      <div class="card">
-        <div class="header" style="padding:0 0 8px">
-          <!-- Usa TU logo PNG -->
-          <img src="assets/logo.png" alt="LexDigital logo">
-          <div>
-            <div class="brand">LexDigital</div>
-            <small class="muted">Asesoría legal online</small>
-          </div>
+      <div class="center">
+        <!-- Logo grande -->
+        <img class="logo-big" src="assets/logo.png" alt="LexDigital logo">
+        <!-- Marca con colores del logo -->
+        <div class="title-app">
+          <span style="color:#0f2e3c">Lex</span><span style="color:#2fb6aa">Digital</span>
         </div>
 
-        <div class="hero-title">Bienvenido/a</div>
-        <p class="muted">Para esta demo puedes ingresar como <b>invitado</b> o simular un <b>registro</b> rápido.</p>
-
-        <div class="grid cols-2" style="margin-top:12px">
-          <!-- Invitado -->
-          <div class="card">
-            <h2>Entrar como invitado</h2>
-            <div class="benefits">
-              <div class="item">
-                <svg viewBox="0 0 24 24"><path d="m4 12 5 5 11-11" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
-                <small>Explora Inicio, Consultas y Plantillas</small>
-              </div>
-              <div class="item">
-                <svg viewBox="0 0 24 24"><path d="m4 12 5 5 11-11" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
-                <small>Sin crear cuenta</small>
-              </div>
-            </div>
-            <button class="btn primary" id="btn-invitado" style="margin-top:10px">Entrar ahora</button>
-          </div>
-
-          <!-- Registro -->
-          <div class="card">
-            <h2>Crear cuenta (demo)</h2>
-            <form id="form-registro" class="grid">
-              <div>
-                <label>Nombre</label>
-                <input class="input" name="nombre" placeholder="Tu nombre"/>
-              </div>
-              <div>
-                <label>Correo</label>
-                <input class="input" type="email" name="correo" placeholder="tucorreo@ejemplo.com"/>
-              </div>
-              <div>
-                <label>Contraseña</label>
-                <input class="input" type="password" name="pass" placeholder="********"/>
-              </div>
-              <button class="btn primary" type="submit">Registrarme</button>
-              <small class="muted">* Demo educativa: no se envían datos reales.</small>
-            </form>
+        <div class="menu-card">
+          <div class="stack">
+            <button class="btn-outline" id="btn-login">Ya tengo una cuenta</button>
+            <button class="btn-outline" id="btn-register">Registrarme</button>
           </div>
         </div>
+        <small class="subtitle">Demo: no se envían datos reales</small>
       </div>
     </section>
 
-    <!-- INICIO -->
-    <section id="inicio" class="section">
-      <div class="card">
-        <div class="hero-title">Tu abogado en el bolsillo</div>
-        <p class="muted">Resuelve dudas legales, genera contratos y contacta por WhatsApp.</p>
-        <a class="btn primary" href="#consultas" onclick="showSection('consultas')">Hacer una consulta</a>
-      </div>
-      <div class="grid cols-3" style="margin-top:12px">
-        <div class="card"><h2>Consultas</h2><p class="muted">Desde S/ 30</p></div>
-        <div class="card"><h2>Plantillas</h2><p class="muted">Contratos personalizables</p></div>
-        <div class="card"><h2>Cursos</h2><p class="muted">Próximamente</p></div>
+    <!-- PANTALLA 2: MENÚ PRINCIPAL (mockup 1) -->
+    <section id="menu" class="section">
+      <div class="center">
+        <div class="menu-header">
+          <div class="avatar">👤</div>
+          <div class="title-app">Abogado<br/>LexDigital</div>
+        </div>
+
+        <div class="menu-card">
+          <div class="stack">
+            <a class="btn-outline" href="#consultas" data-goto="consultas">Mi Abogado Legal</a>
+            <a class="btn-outline" href="#plantillas" data-goto="plantillas">Contratos y Planillas</a>
+            <a class="btn-outline" href="#cursos" data-goto="cursos">Cursos Legales</a>
+            <a class="btn-outline" href="#planes" data-goto="planes">Planes y Precios</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -146,24 +125,56 @@
     <!-- PLANTILLAS -->
     <section id="plantillas" class="section">
       <div class="card">
-        <h1>Plantillas</h1>
-        <p class="muted">Demo de contratos (agrega más luego).</p>
+        <h1>Contratos y Planillas</h1>
+        <p class="subtitle">Demo de contratos (agrega más luego).</p>
         <div class="grid cols-2">
-          <div class="card"><b>Arrendamiento</b><p class="muted">Alquiler de inmueble</p></div>
-          <div class="card"><b>Compraventa</b><p class="muted">Bien mueble</p></div>
+          <div class="card"><b>Arrendamiento</b><p class="subtitle">Alquiler de inmueble</p></div>
+          <div class="card"><b>Compraventa</b><p class="subtitle">Bien mueble</p></div>
         </div>
       </div>
     </section>
+
+    <!-- CURSOS -->
+    <section id="cursos" class="section">
+      <div class="card">
+        <h1>Cursos legales</h1>
+        <p class="subtitle">Próximamente: Derechos laborales, familiares y empresariales.</p>
+      </div>
+    </section>
+
+    <!-- PLANES -->
+    <section id="planes" class="section">
+      <div class="card">
+        <h1>Planes y precios</h1>
+        <div class="grid cols-3">
+          <div class="card">
+            <h2>Free</h2>
+            <p class="subtitle">Chatbot y plantillas básicas.</p>
+            <button class="btn">Elegir</button>
+          </div>
+          <div class="card">
+            <h2>Pro</h2>
+            <p class="subtitle">Consultas priorizadas y plantillas pro.</p>
+            <button class="btn primary">Elegir</button>
+          </div>
+          <div class="card">
+            <h2>Business</h2>
+            <p class="subtitle">Soporte a PYMES y gestión de casos.</p>
+            <button class="btn">Elegir</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
 
-  <!-- Tab bar (oculta en Acceso) -->
+  <!-- Tabbar oculta en esta demo tipo ventanas -->
   <nav id="tabbar" class="tabbar" style="display:none">
-    <a class="tab active" href="#inicio" data-target="inicio">Inicio</a>
+    <a class="tab active" href="#menu" data-target="menu">Menú</a>
     <a class="tab" href="#consultas" data-target="consultas">Consultas</a>
     <a class="tab" href="#plantillas" data-target="plantillas">Plantillas</a>
   </nav>
 
-  <!-- Toast -->
   <div id="toast" class="toast"></div>
 
   <!-- Lógica -->
@@ -172,11 +183,10 @@
   <!-- Service Worker para PWA -->
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js');
-      });
+      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
     }
   </script>
 </body>
 </html>
+
 
