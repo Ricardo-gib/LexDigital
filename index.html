@@ -7,30 +7,64 @@
   <title>LexDigital · Asesoría Legal</title>
   <link rel="stylesheet" href="styles.css"/>
   <link rel="manifest" href="manifest.json" />
+  <style>
+    /* Mini retoques visuales sin tocar tu CSS base */
+    .hero-title{font-size:1.8rem;font-weight:800;margin:2px 0 6px}
+    .muted{color:var(--muted)}
+    .pill{display:inline-flex;gap:6px;align-items:center;border:1px solid rgba(255,255,255,.12);
+      padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.04);font-size:.85rem}
+    .benefits{display:grid;gap:8px;margin-top:8px}
+    .benefits .item{display:flex;gap:10px;align-items:center}
+    .benefits .item svg{width:18px;height:18px;opacity:.9}
+    .topbar{display:none;justify-content:space-between;align-items:center;margin:0 0 10px}
+    .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:90px;padding:10px 14px;border-radius:10px;
+      background:rgba(15,180,100,.12);border:1px solid rgba(15,180,100,.25);color:#c9f5de;font-weight:600;display:none;z-index:60}
+  </style>
 </head>
 <body>
   <div class="container">
 
-    <!-- ACCESO (pantalla previa) -->
+    <!-- TOPBAR (aparece cuando se inicia sesión o como invitado) -->
+    <div id="topbar" class="topbar">
+      <div class="pill">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm7 9a7 7 0 0 0-14 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span id="hello">Hola, invitado</span>
+      </div>
+      <button id="btn-logout" class="btn">Cerrar sesión</button>
+    </div>
+
+    <!-- ACCESO -->
     <section id="acceso" class="section active">
       <div class="card">
         <div class="header" style="padding:0 0 8px">
           <img src="assets/logo.svg" alt="LexDigital logo">
           <div>
             <div class="brand">LexDigital</div>
-            <small>Asesoría legal online</small>
+            <small class="muted">Asesoría legal online</small>
           </div>
         </div>
-        <h1>Bienvenido/a</h1>
-        <p>Para esta demo puedes ingresar como <b>invitado</b> o simular un <b>registro</b> rápido.</p>
 
-        <div class="grid cols-2" style="margin-top:10px">
+        <div class="hero-title">Bienvenido/a</div>
+        <p class="muted">Para esta demo puedes ingresar como <b>invitado</b> o simular un <b>registro</b> rápido.</p>
+
+        <div class="grid cols-2" style="margin-top:12px">
+          <!-- Invitado -->
           <div class="card">
             <h2>Entrar como invitado</h2>
-            <p>Explora Inicio, Consultas y Plantillas sin crear cuenta.</p>
-            <button class="btn primary" id="btn-invitado">Entrar ahora</button>
+            <div class="benefits">
+              <div class="item">
+                <svg viewBox="0 0 24 24"><path d="m4 12 5 5 11-11" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+                <small>Explora Inicio, Consultas y Plantillas</small>
+              </div>
+              <div class="item">
+                <svg viewBox="0 0 24 24"><path d="m4 12 5 5 11-11" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+                <small>Sin crear cuenta</small>
+              </div>
+            </div>
+            <button class="btn primary" id="btn-invitado" style="margin-top:10px">Entrar ahora</button>
           </div>
 
+          <!-- Registro -->
           <div class="card">
             <h2>Crear cuenta (demo)</h2>
             <form id="form-registro" class="grid">
@@ -47,7 +81,7 @@
                 <input class="input" type="password" name="pass" placeholder="********"/>
               </div>
               <button class="btn primary" type="submit">Registrarme</button>
-              <small class="notice">* Demo educativa: no se envían datos reales.</small>
+              <small class="muted">* Demo educativa: no se envían datos reales.</small>
             </form>
           </div>
         </div>
@@ -57,14 +91,14 @@
     <!-- INICIO -->
     <section id="inicio" class="section">
       <div class="card">
-        <h1>Tu abogado en el bolsillo</h1>
-        <p>Resuelve dudas legales, genera contratos y contacta por WhatsApp.</p>
+        <div class="hero-title">Tu abogado en el bolsillo</div>
+        <p class="muted">Resuelve dudas legales, genera contratos y contacta por WhatsApp.</p>
         <a class="btn primary" href="#consultas" onclick="showSection('consultas')">Hacer una consulta</a>
       </div>
       <div class="grid cols-3" style="margin-top:12px">
-        <div class="card"><h2>Consultas</h2><p>Desde S/ 30</p></div>
-        <div class="card"><h2>Plantillas</h2><p>Contratos personalizables</p></div>
-        <div class="card"><h2>Cursos</h2><p>Próximamente</p></div>
+        <div class="card"><h2>Consultas</h2><p class="muted">Desde S/ 30</p></div>
+        <div class="card"><h2>Plantillas</h2><p class="muted">Contratos personalizables</p></div>
+        <div class="card"><h2>Cursos</h2><p class="muted">Próximamente</p></div>
       </div>
     </section>
 
@@ -106,25 +140,28 @@
     <section id="plantillas" class="section">
       <div class="card">
         <h1>Plantillas</h1>
-        <p>Demo de contratos (agrega más luego).</p>
+        <p class="muted">Demo de contratos (agrega más luego).</p>
         <div class="grid cols-2">
-          <div class="card"><b>Arrendamiento</b><p>Alquiler de inmueble</p></div>
-          <div class="card"><b>Compraventa</b><p>Bien mueble</p></div>
+          <div class="card"><b>Arrendamiento</b><p class="muted">Alquiler de inmueble</p></div>
+          <div class="card"><b>Compraventa</b><p class="muted">Bien mueble</p></div>
         </div>
       </div>
     </section>
   </div>
 
-  <!-- Tab bar (oculta al inicio) -->
+  <!-- Tab bar (oculta en Acceso) -->
   <nav id="tabbar" class="tabbar" style="display:none">
     <a class="tab active" href="#inicio" data-target="inicio">Inicio</a>
     <a class="tab" href="#consultas" data-target="consultas">Consultas</a>
     <a class="tab" href="#plantillas" data-target="plantillas">Plantillas</a>
   </nav>
 
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
   <script src="app.js"></script>
 
-  <!-- Registro SW (PWA) -->
+  <!-- SW para PWA -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
