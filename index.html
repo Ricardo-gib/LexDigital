@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>LexDigital · Asesoría Legal</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <img src="assets/logo.svg" alt="LexDigital logo">
+      <div><div class="brand">LexDigital</div><small>Asesoría legal online</small></div>
+    </header>
+    <section id="inicio" class="section active">
+      <div class="card">
+        <h1>Tu abogado en el bolsillo</h1>
+        <p>Resuelve dudas legales, genera contratos y contacta por WhatsApp.</p>
+        <a class="btn primary" href="#consultas" onclick="showSection('consultas')">Hacer una consulta</a>
+      </div>
+      <div class="grid cols-3" style="margin-top:12px">
+        <div class="card"><h2>Consultas</h2><p>Desde S/ 30</p></div>
+        <div class="card"><h2>Plantillas</h2><p>Contratos personalizables</p></div>
+        <div class="card"><h2>Cursos</h2><p>Próximamente</p></div>
+      </div>
+    </section>
+    <section id="consultas" class="section">
+      <div class="card">
+        <h1>Consulta legal</h1>
+        <form id="consulta-form" class="grid">
+          <div>
+            <label>Área</label>
+            <select name="area"><option>Laboral</option><option>Civil</option><option>Penal</option><option>Empresarial</option></select>
+          </div>
+          <div>
+            <label>Tu teléfono (WhatsApp)</label>
+            <input id="telefono" class="input" name="telefono" placeholder="9xx xxx xxx"/>
+          </div>
+          <div>
+            <label>Describe tu consulta</label>
+            <textarea class="input" id="mensaje" name="mensaje" rows="5" placeholder="Ej.: Mi arrendador no me devuelve la garantía…"></textarea>
+          </div>
+          <div>
+            <button class="btn primary" type="submit">Simular respuesta</button>
+            <button class="btn" type="button" id="btn-whatsapp">Enviar por WhatsApp</button>
+          </div>
+        </form>
+      </div>
+      <div class="card"><h2>Respuesta</h2><div id="respuesta" class="generated">La orientación simulada aparecerá aquí.</div></div>
+    </section>
+    <section id="plantillas" class="section">
+      <div class="card">
+        <h1>Plantillas</h1>
+        <p>Demo de contratos (agrega más luego).</p>
+        <div class="grid cols-2">
+          <div class="card"><b>Arrendamiento</b><p>Alquiler de inmueble</p></div>
+          <div class="card"><b>Compraventa</b><p>Bien mueble</p></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <nav class="tabbar">
+    <a class="tab active" href="#inicio" data-target="inicio">Inicio</a>
+    <a class="tab" href="#consultas" data-target="consultas">Consultas</a>
+    <a class="tab" href="#plantillas" data-target="plantillas">Plantillas</a>
+  </nav>
+  <script src="app.js"></script>
+</body>
+</html>
