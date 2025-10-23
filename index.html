@@ -3,8 +3,11 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#1e88e5"/>
   <title>LexDigital · Asesoría Legal</title>
   <link rel="stylesheet" href="styles.css"/>
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
 </head>
 <body>
   <div class="container">
@@ -12,6 +15,7 @@
       <img src="assets/logo.svg" alt="LexDigital logo">
       <div><div class="brand">LexDigital</div><small>Asesoría legal online</small></div>
     </header>
+
     <section id="inicio" class="section active">
       <div class="card">
         <h1>Tu abogado en el bolsillo</h1>
@@ -24,13 +28,19 @@
         <div class="card"><h2>Cursos</h2><p>Próximamente</p></div>
       </div>
     </section>
+
     <section id="consultas" class="section">
       <div class="card">
         <h1>Consulta legal</h1>
         <form id="consulta-form" class="grid">
           <div>
             <label>Área</label>
-            <select name="area"><option>Laboral</option><option>Civil</option><option>Penal</option><option>Empresarial</option></select>
+            <select name="area">
+              <option>Laboral</option>
+              <option>Civil</option>
+              <option>Penal</option>
+              <option>Empresarial</option>
+            </select>
           </div>
           <div>
             <label>Tu teléfono (WhatsApp)</label>
@@ -46,8 +56,12 @@
           </div>
         </form>
       </div>
-      <div class="card"><h2>Respuesta</h2><div id="respuesta" class="generated">La orientación simulada aparecerá aquí.</div></div>
+      <div class="card">
+        <h2>Respuesta</h2>
+        <div id="respuesta" class="generated">La orientación simulada aparecerá aquí.</div>
+      </div>
     </section>
+
     <section id="plantillas" class="section">
       <div class="card">
         <h1>Plantillas</h1>
@@ -59,11 +73,22 @@
       </div>
     </section>
   </div>
+
   <nav class="tabbar">
     <a class="tab active" href="#inicio" data-target="inicio">Inicio</a>
     <a class="tab" href="#consultas" data-target="consultas">Consultas</a>
     <a class="tab" href="#plantillas" data-target="plantillas">Plantillas</a>
   </nav>
+
   <script src="app.js"></script>
+
+  <!-- Registro del Service Worker para PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js');
+      });
+    }
+  </script>
 </body>
 </html>
