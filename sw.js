@@ -1,5 +1,4 @@
-// sw.js
-const CACHE = 'lexdigital-cache-v2'; // <- súbelo de v1 a v2
+const CACHE = 'lexdigital-cache-v2';
 const ASSETS = [
   './',
   './index.html',
