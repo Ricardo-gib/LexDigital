@@ -6,17 +6,56 @@
   <meta name="theme-color" content="#1e88e5"/>
   <title>LexDigital · Asesoría Legal</title>
   <link rel="stylesheet" href="styles.css"/>
-  <!-- PWA -->
   <link rel="manifest" href="manifest.json" />
 </head>
 <body>
   <div class="container">
-    <header class="header">
-      <img src="assets/logo.svg" alt="LexDigital logo">
-      <div><div class="brand">LexDigital</div><small>Asesoría legal online</small></div>
-    </header>
 
-    <section id="inicio" class="section active">
+    <!-- ACCESO (pantalla previa) -->
+    <section id="acceso" class="section active">
+      <div class="card">
+        <div class="header" style="padding:0 0 8px">
+          <img src="assets/logo.svg" alt="LexDigital logo">
+          <div>
+            <div class="brand">LexDigital</div>
+            <small>Asesoría legal online</small>
+          </div>
+        </div>
+        <h1>Bienvenido/a</h1>
+        <p>Para esta demo puedes ingresar como <b>invitado</b> o simular un <b>registro</b> rápido.</p>
+
+        <div class="grid cols-2" style="margin-top:10px">
+          <div class="card">
+            <h2>Entrar como invitado</h2>
+            <p>Explora Inicio, Consultas y Plantillas sin crear cuenta.</p>
+            <button class="btn primary" id="btn-invitado">Entrar ahora</button>
+          </div>
+
+          <div class="card">
+            <h2>Crear cuenta (demo)</h2>
+            <form id="form-registro" class="grid">
+              <div>
+                <label>Nombre</label>
+                <input class="input" name="nombre" placeholder="Tu nombre"/>
+              </div>
+              <div>
+                <label>Correo</label>
+                <input class="input" type="email" name="correo" placeholder="tucorreo@ejemplo.com"/>
+              </div>
+              <div>
+                <label>Contraseña</label>
+                <input class="input" type="password" name="pass" placeholder="********"/>
+              </div>
+              <button class="btn primary" type="submit">Registrarme</button>
+              <small class="notice">* Demo educativa: no se envían datos reales.</small>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INICIO -->
+    <section id="inicio" class="section">
       <div class="card">
         <h1>Tu abogado en el bolsillo</h1>
         <p>Resuelve dudas legales, genera contratos y contacta por WhatsApp.</p>
@@ -29,6 +68,7 @@
       </div>
     </section>
 
+    <!-- CONSULTAS -->
     <section id="consultas" class="section">
       <div class="card">
         <h1>Consulta legal</h1>
@@ -62,6 +102,7 @@
       </div>
     </section>
 
+    <!-- PLANTILLAS -->
     <section id="plantillas" class="section">
       <div class="card">
         <h1>Plantillas</h1>
@@ -74,7 +115,8 @@
     </section>
   </div>
 
-  <nav class="tabbar">
+  <!-- Tab bar (oculta al inicio) -->
+  <nav id="tabbar" class="tabbar" style="display:none">
     <a class="tab active" href="#inicio" data-target="inicio">Inicio</a>
     <a class="tab" href="#consultas" data-target="consultas">Consultas</a>
     <a class="tab" href="#plantillas" data-target="plantillas">Plantillas</a>
@@ -82,7 +124,7 @@
 
   <script src="app.js"></script>
 
-  <!-- Registro del Service Worker para PWA -->
+  <!-- Registro SW (PWA) -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
