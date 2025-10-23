@@ -1,22 +1,40 @@
-// ======= Navegación por secciones =======
+// ===== Utilidades UI =====
 const sections = document.querySelectorAll('.section');
 const tabs = document.querySelectorAll('.tab');
 const tabbar = document.getElementById('tabbar');
+const topbar = document.getElementById('topbar');
+const helloEl = document.getElementById('hello');
+const toastEl = document.getElementById('toast');
 
 function showSection(id){
   sections.forEach(s => s.classList.toggle('active', s.id === id));
   tabs.forEach(t => t.classList.toggle('active', t.dataset.target === id));
+  if (id === 'acceso') { tabbar.style.display = 'none'; topbar.style.display = 'none'; }
   location.hash = id;
 }
 
-// Si ya “inició sesión” antes, ir a Inicio; si no, mostrar Acceso
+function toast(msg){
+  if(!toastEl) return;
+  toastEl.textContent = msg;
+  toastEl.style.display = 'block';
+  setTimeout(()=> toastEl.style.display = 'none', 1800);
+}
+
+function setHello(name, mode){
+  const who = name ? name : 'invitado';
+  helloEl.textContent = `Hola, ${who}${mode === 'guest' ? ' (invitado)' : ''}`;
+}
+
+// ===== Estado de sesión (demo) =====
 window.addEventListener('load', ()=>{
-  const auth = localStorage.getItem('lex_auth'); // 'guest' o 'user'
+  const auth = localStorage.getItem('lex_auth'); // 'guest' | 'user'
+  const name = localStorage.getItem('lex_user_name') || '';
   if (auth) {
+    setHello(name, auth);
     tabbar.style.display = 'grid';
+    topbar.style.display = 'flex';
     showSection('inicio');
   } else {
-    tabbar.style.display = 'none';
     showSection('acceso');
   }
 });
@@ -27,36 +45,46 @@ tabs.forEach(t => t.addEventListener('click', (e)=>{
   showSection(t.dataset.target);
 }));
 
-// ======= Acceso: Invitado y Registro (demo) =======
-const btnInvitado = document.getElementById('btn-invitado');
-btnInvitado?.addEventListener('click', ()=>{
+// ===== Acceso =====
+document.getElementById('btn-invitado')?.addEventListener('click', ()=>{
   localStorage.setItem('lex_auth', 'guest');
+  localStorage.removeItem('lex_user_name');
+  setHello('', 'guest');
   tabbar.style.display = 'grid';
+  topbar.style.display = 'flex';
   showSection('inicio');
+  toast('Entraste como invitado');
 });
 
-const formRegistro = document.getElementById('form-registro');
-formRegistro?.addEventListener('submit', (e)=>{
+document.getElementById('form-registro')?.addEventListener('submit', (e)=>{
   e.preventDefault();
-  const formData = new FormData(formRegistro);
-  const nombre = (formData.get('nombre') || '').toString().trim();
-  const correo = (formData.get('correo') || '').toString().trim();
-  const pass   = (formData.get('pass')   || '').toString().trim();
+  const fd = new FormData(e.target);
+  const nombre = (fd.get('nombre') || '').toString().trim();
+  const correo = (fd.get('correo') || '').toString().trim();
+  const pass   = (fd.get('pass')   || '').toString().trim();
 
-  // Validación mínima (demo)
   if (!nombre || !correo || !pass) {
-    alert('Completa nombre, correo y contraseña (demo).');
+    toast('Completa nombre, correo y contraseña');
     return;
   }
-  // Guardamos “sesión” de demo
   localStorage.setItem('lex_auth', 'user');
   localStorage.setItem('lex_user_name', nombre);
+  setHello(nombre, 'user');
   tabbar.style.display = 'grid';
+  topbar.style.display = 'flex';
   showSection('inicio');
-  alert('¡Registro exitoso (demo)!');
+  toast('Registro exitoso (demo)');
 });
 
-// ======= Consultas (respuesta simulada + WhatsApp) =======
+// Cerrar sesión
+document.getElementById('btn-logout')?.addEventListener('click', ()=>{
+  localStorage.removeItem('lex_auth');
+  localStorage.removeItem('lex_user_name');
+  showSection('acceso');
+  toast('Sesión cerrada');
+});
+
+// ===== Consultas (respuesta simulada + WhatsApp) =====
 const form = document.querySelector('#consulta-form');
 const out = document.querySelector('#respuesta');
 
@@ -70,19 +98,19 @@ form?.addEventListener('submit', (e)=>{
   }
   const base = {
     'Laboral': 'Pago de beneficios y evaluación de despido arbitrario.',
-    'Civil': 'Revisar contrato, evidencias y carta notarial.',
+    'Civil': 'Revisión de contrato, evidencias y carta notarial.',
     'Penal': 'No declarar sin abogado; preservar pruebas.',
     'Empresarial': 'Tipo societario, minuta y trámites SUNARP/SUNAT.'
   };
   out.innerHTML = `📌 <b>Área:</b> ${area}<br><br>${base[area]}<br><br><small>Respuesta simulada del prototipo.</small>`;
+  toast('Respuesta generada');
 });
 
-const wbtn = document.querySelector('#btn-whatsapp');
-wbtn?.addEventListener('click', ()=>{
+document.getElementById('btn-whatsapp')?.addEventListener('click', ()=>{
   const phone = document.querySelector('#telefono').value.trim();
   const msg = document.querySelector('#mensaje').value.trim();
   if(!phone || !msg){
-    alert('Completa teléfono y consulta.');
+    toast('Completa teléfono y consulta');
     return;
   }
   const url = `https://wa.me/${phone.replace(/[^0-9]/g,'')}?text=${encodeURIComponent(msg)}`;
