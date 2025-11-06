@@ -1,18 +1,36 @@
+// src/views/Login.js
+import { signInWithGoogle, handleRedirectResult, auth } from '../lib/firebase.js';
+
 export default function Login(){
-  const html = `
-  <div class="container">
+  const el = document.createElement('section');
+  el.className = 'container';
+  el.innerHTML = `
     <div style="flex:1;display:grid;place-items:center">
       <div class="card" style="max-width:520px;width:100%;text-align:center">
-        <img src="assets/icon-512.png" alt="LexDigital" class="full" style="max-width:160px;margin:0 auto 10px">
-        <h1>LexDigital</h1>
-        <p class="muted">Los servicios legales nunca fueron tan sencillos.</p>
+        <h1>Acceso</h1>
+        <p class="muted">Elige tu método de acceso</p>
         <div class="grid">
-          <a class="btn primary" href="#/home">Ya tengo una cuenta</a>
-          <a class="btn" href="#/home?guest=1">Entrar como invitado</a>
-          <a class="btn" href="#/home?register=1">Registrarme</a>
+          <button class="btn primary" id="btnGoogle">Acceder con Google</button>
+          <a class="btn" href="#register">Registrarme con correo</a>
+          <a class="btn" href="#home?guest=1">Entrar como invitado</a>
         </div>
+        <p class="muted" id="msg" style="margin-top:8px"></p>
       </div>
     </div>
-  </div>`;
-  return { html };
+  `;
+
+  // Botón Google
+  el.querySelector('#btnGoogle')?.addEventListener('click', () => {
+    signInWithGoogle();
+  });
+
+  // Si el redirect volvió desde Google, aquí se resuelve
+  handleRedirectResult().then(() => {
+    if (auth.currentUser) {
+      // Ya logueado: llévalo a la pantalla principal
+      location.hash = '#home';
+    }
+  });
+
+  return el;
 }
