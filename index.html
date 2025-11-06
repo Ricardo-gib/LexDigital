@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>LexDigital</title>
+  <link rel="manifest" href="manifest.json?v=17">
+  <link rel="stylesheet" href="styles/base.css?v=17">
+  <link rel="stylesheet" href="styles/components.css?v=17">
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="src/main.js?v=17"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      addEventListener('load', ()=>navigator.serviceWorker.register('sw.js?v=17'));
+    }
+  </script>
+</body>
+</html>

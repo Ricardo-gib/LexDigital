@@ -1,0 +1,26 @@
+{
+  "name": "LexDigital",
+  "short_name": "LexDigital",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F2A52",
+  "theme_color": "#0F2A52",
+  "icons": [
+    {
+      "src": "assets/perfil_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/perfil_512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/perfil_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
