@@ -1,4 +1,4 @@
-export default function Home() {
+export default function Home({ V = '26' } = {}) {
   const el = document.createElement('section');
   el.className = 'welcome-hero';
 
@@ -6,15 +6,15 @@ export default function Home() {
     <header class="hero-top">
       <div
         class="hero-logo"
-        style="background-image:url('assets/icon_512.png?v=23')"
+        style="background-image:url('assets/icon_512.png?v=${V}')"
         role="img" aria-label="LexDigital"
       ></div>
 
       <h1 class="brand">
         <span class="lex">Lex</span><span class="accent">Digital</span>
       </h1>
-      <!-- NUEVA FRASE -->
-      <p class="tagline">Asesoría legal al instante, confiable y a tú alcance.</p>
+
+      <p class="tagline">Asesoría legal al instante, confiable y a tu alcance.</p>
     </header>
 
     <div class="hero-card">
