@@ -19,17 +19,16 @@ export default function Login(){
     </div>
   `;
 
-  // Botón Google
   el.querySelector('#btnGoogle')?.addEventListener('click', () => {
     signInWithGoogle();
   });
 
-  // Si el redirect volvió desde Google, aquí se resuelve
   handleRedirectResult().then(() => {
     if (auth.currentUser) {
-      location.hash = '#/home';  // ojo: con slash
+      location.hash = '#/home';
     }
   });
 
+  console.log('[LOGIN] vista montada');
   return el;
 }
