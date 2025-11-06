@@ -1,5 +1,5 @@
 // Forzar cache-bust de todos los módulos
-const V = '26';
+const V = '28';
 
 function mount(el) {
   const app = document.getElementById('app');
