@@ -6,7 +6,7 @@ export default function Home() {
     <header class="hero-top">
       <div
         class="hero-logo"
-        style="background-image:url('assets/icon_512.png?v=22')"
+        style="background-image:url('assets/icon_512.png?v=23')"
         role="img" aria-label="LexDigital"
       ></div>
 
@@ -14,7 +14,7 @@ export default function Home() {
         <span class="lex">Lex</span><span class="accent">Digital</span>
       </h1>
       <!-- NUEVA FRASE -->
-      <p class="tagline">Asesoría legal al instante, confiable y a tu alcance.</p>
+      <p class="tagline">Asesoría legal al instante, confiable y a tú alcance.</p>
     </header>
 
     <div class="hero-card">
