@@ -6,14 +6,14 @@
   padding: 0 16px 48px;
 }
 
-/* Bloque superior (azul) */
+/* Bloque superior (azul) – centrado vertical con más aire arriba */
 .hero-top{
   position: relative;
-  min-height: 56vh;                 /* alto generoso como tu mockup */
+  min-height: 62vh;               /* +altura para centrar mejor */
   display: grid;
   place-items: center;
   grid-template-rows: auto auto auto;
-  padding: 28px 20px 148px;         /* deja aire para que NO tape el 1er botón */
+  padding: 52px 20px 148px;       /* +padding-top para despegarlo del borde superior */
   border-radius: 28px;
   background: linear-gradient(180deg,#0f2f49 0%,#133a55 100%);
   color: #fff;
@@ -71,7 +71,6 @@
   z-index: 2;
 }
 
-
 /* Botones */
 .btn{
   width: 100%;
@@ -106,10 +105,15 @@
   font-size: 15.5px;
 }
 
+/* Desktop */
 @media (min-width: 900px){
-  .hero-top{ min-height: 50vh; padding-bottom: 160px; }
+  .hero-top{
+    min-height: 58vh;             /* sigue centrado en pantallas grandes */
+    padding: 72px 20px 160px;     /* aún más aire arriba */
+  }
   .hero-logo{ width: 164px; height: 164px; }
   /* Antes: .hero-card{ margin-top: -92px; padding: 26px 20px 20px; } */
   .hero-card{ margin-top: 20px; padding: 26px 20px 22px; }
 }
+
 
