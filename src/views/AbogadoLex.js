@@ -1,7 +1,7 @@
 // src/views/AbogadoLex.js
-export default function AbogadoLex(){
+export default function AbogadoLex() {
   const el = document.createElement('section');
-  el.className = 'screen full-screen';
+  el.className = 'screen full-screen'; // full viewport
 
   el.innerHTML = `
     <div class="app-card full-card">
@@ -22,5 +22,21 @@ export default function AbogadoLex(){
       </nav>
     </div>
   `;
+
+  // 💡 fuerza que el contenedor ocupe toda la pantalla visible
+  Object.assign(el.style, {
+    height: '100svh',
+    minHeight: '100svh',
+    width: '100%',
+    overflow: 'hidden',
+  });
+
+  // 💡 asegura que el body no deje márgenes en móviles
+  document.body.style.margin = '0';
+  document.body.style.padding = '0';
+  document.body.style.height = '100svh';
+  document.body.style.overflow = 'hidden';
+  document.documentElement.style.height = '100%';
+
   return el;
 }
