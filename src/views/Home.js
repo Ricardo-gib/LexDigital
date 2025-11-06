@@ -18,9 +18,9 @@ export default function Home() {
     </header>
 
     <div class="hero-card">
-      <a class="btn primary" href="#login">Acceder con correo</a>
-      <a class="btn" href="#signup">Registrarme</a>
-      <a class="link-invite" href="#home?guest=1">Acceder como invitado</a>
+      <a class="btn primary" href="#/login">Acceder con correo</a>
+      <a class="btn" href="#/register">Registrarme</a>
+      <a class="link-invite" href="#/home?guest=1">Acceder como invitado</a>
     </div>
   `;
   return el;
