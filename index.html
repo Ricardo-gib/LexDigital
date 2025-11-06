@@ -1,23 +1,44 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LexDigital</title>
 
-  <!-- Sube TODAS las versiones a v=19 para romper caché -->
-  <link rel="manifest" href="manifest.json?v=22">
-  <link rel="stylesheet" href="styles/base.css?v=22">
-  <link rel="stylesheet" href="styles/components.css?v=22">
+  <!-- Versión unificada para bustear caché -->
+  <link rel="manifest" href="manifest.json?v=25" />
+  <link rel="stylesheet" href="styles/base.css?v=25" />
+  <link rel="stylesheet" href="styles/components.css?v=25" />
 </head>
 <body>
   <div id="app"></div>
 
-  <script type="module" src="src/main.js?v=21"></script>
+  <!-- Limpieza agresiva (1ra carga): borra SW y caches para forzar que se vean los cambios -->
+  <script>
+    (async () => {
+      try {
+        if ('serviceWorker' in navigator) {
+          const regs = await navigator.serviceWorker.getRegistrations();
+          for (const r of regs) await r.unregister();
+        }
+        if (window.caches) {
+          const keys = await caches.keys();
+          await Promise.all(keys.map(k => caches.delete(k)));
+        }
+      } catch (_) {}
+    })();
+  </script>
+
+  <!-- App -->
+  <script type="module" src="src/main.js?v=25"></script>
+
+  <!-- Si luego quieres volver a registrar un SW, descomenta esto y asegúrate que sw.js no cachee agresivo -->
+  <!--
   <script>
     if ('serviceWorker' in navigator) {
-      addEventListener('load', () => navigator.serviceWorker.register('sw.js?v=22'));
+      addEventListener('load', () => navigator.serviceWorker.register('sw.js?v=25'));
     }
   </script>
+  -->
 </body>
 </html>
