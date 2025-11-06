@@ -1,62 +1,113 @@
-/* ===== HOME / WELCOME ===== */
-
+/* ===== Home (Landing) ===== */
 .welcome-hero{
   max-width: 980px;
   margin: 0 auto;
-  padding: 0 16px 40px;
+  padding: 0 16px 48px;
 }
 
-/* Hero superior limpio y centrado */
-.hero-top {
+/* Bloque superior: 50/50 de la pantalla (móvil) */
+.hero-top{
   position: relative;
-  border-radius: 22px;
-  min-height: 50vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  text-align: center;
+  min-height: 50vh;                 /* 50% de alto de pantalla */
+  display: grid;
+  place-items: center;
+  grid-template-rows: auto auto auto;
+  padding: 24px 16px 110px;         /* deja espacio para el solape de la card */
+  border-radius: 26px;
+  background:
+    linear-gradient(180deg, #0f2f49 0%, #123a54 100%),
+    #0f2f49;
   color: #fff;
-  padding: 36px 16px 80px;
-  background: linear-gradient(180deg, #0f2f49 0%, #113a56 55%, #ffffff 55%);
-  box-shadow: 0 12px 26px rgba(15, 47, 73, 0.16);
+  box-shadow: 0 8px 24px rgba(15, 47, 73, .18);
   overflow: hidden;
 }
 
-/* Logo centrado y sin solaparse */
-.hero-logo {
-  width: 120px;
-  height: 120px;
+/* Logo centrado */
+.hero-logo{
+  width: 112px;
+  height: 112px;
   border-radius: 999px;
-  margin: 0 auto 12px;
-  background: #0f2f49 url("../assets/icon_512.png?v=19") center/contain no-repeat;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25), inset 0 0 0 5px rgba(255, 255, 255, 0.9);
-  z-index: 2;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 10px 26px rgba(0,0,0,.24);
+  z-index: 1;
 }
 
-/* Marca principal LexDigital */
-.brand {
-  margin: 6px 0 8px;
+/* Marca */
+.brand{
+  margin: 10px 0 4px;
   font-weight: 800;
-  font-size: clamp(26px, 5vw, 34px);
-  line-height: 1.15;
-  z-index: 2;
+  letter-spacing: .2px;
+  line-height: 1.1;
+  font-size: clamp(26px, 6vw, 40px);
+  z-index: 1;
 }
+.brand .lex { color: #ffffff; }
+.brand .accent { color: #2bb7a7; }
 
-.brand span {
-  color: #ffffff; /* “Lex” */
-}
-
-.brand .accent {
-  color: #2bb7a7; /* “Digital” */
-}
-
-/* Frase de bienvenida */
-.tagline {
+/* Frase */
+.tagline{
   margin: 0;
-  color: #e7edf2;
-  font-size: clamp(15px, 3.8vw, 18px);
-  line-height: 1.45;
-  padding: 0 18px;
+  text-align: center;
+  color: rgba(255,255,255,.92);
+  font-size: clamp(14px, 3.9vw, 18px);
+  line-height: 1.4;
+  padding: 0 8px;
+  z-index: 1;
+}
+
+/* Tarjeta de botones solapada y centrada */
+.hero-card{
+  max-width: 560px;
+  width: min(92%, 560px);
+  margin: -68px auto 0;             /* sube y solapa bajo el header */
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 18px 16px 16px;
+  box-shadow: 0 18px 40px rgba(16,24,40,.16);
+  display: grid;
+  gap: 12px;
   z-index: 2;
 }
+
+/* Botones */
+.btn{
+  width: 100%;
+  border-radius: 999px;
+  padding: 14px 18px;
+  border: 2px solid #0f2f49;
+  background: #fff;
+  color: #0f2f49;
+  font-weight: 700;
+  font-size: clamp(15px, 4.2vw, 18px);
+  text-align: center;
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.btn.primary{
+  background: #0f2f49;
+  color: #fff;
+  border-color: #0f2f49;
+}
+.btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(15,47,73,.14);
+}
+
+/* Link invitado */
+.link-invite{
+  justify-self: center;
+  margin-top: 4px;
+  color: #0a66ff;
+  text-decoration: underline;
+  font-weight: 600;
+  font-size: 15.5px;
+}
+
+/* Ajustes en pantallas grandes */
+@media (min-width: 900px){
+  .hero-top{ min-height: 46vh; padding-bottom: 120px; }
+  .hero-logo{ width: 124px; height: 124px; }
+  .hero-card{ margin-top: -76px; }
+}
+
