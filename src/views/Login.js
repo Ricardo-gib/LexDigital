@@ -19,16 +19,33 @@ export default function Login(){
     </div>
   `;
 
-  el.querySelector('#btnGoogle')?.addEventListener('click', () => {
-    signInWithGoogle();
+  const msg = el.querySelector('#msg');
+
+  el.querySelector('#btnGoogle')?.addEventListener('click', async () => {
+    msg.textContent = 'Redirigiendo a Google…';
+    try {
+      await signInWithGoogle(); // abre selector (redirect)
+    } catch (e) {
+      console.error('[GoogleSignInError]', e);
+      msg.textContent = 'No se pudo abrir Google: ' + (e?.message || e);
+    }
   });
 
-  handleRedirectResult().then(() => {
+  handleRedirectResult().then((res) => {
+    // res puede venir null si no es retorno de Google
     if (auth.currentUser) {
+      msg.textContent = '¡Autenticado como ' + (auth.currentUser.email || auth.currentUser.uid) + '!';
       location.hash = '#/home';
+    } else if (res === null) {
+      // primera carga normal, sin retorno de Google
+      msg.textContent = '';
     }
+  }).catch(e => {
+    console.error('[RedirectResultError]', e);
+    msg.textContent = 'Error al regresar de Google: ' + (e?.message || e);
   });
 
   console.log('[LOGIN] vista montada');
   return el;
 }
+
