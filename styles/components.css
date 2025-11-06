@@ -1,4 +1,4 @@
-/* ===== Home (Landing) ===== */
+/* ===== Home (Landing) - REEMPLAZAR COMPLETO ===== */
 .welcome-hero{
   max-width: 980px;
   margin: 0 auto;
@@ -12,25 +12,24 @@
   display: grid;
   place-items: center;
   grid-template-rows: auto auto auto;
-  padding: 24px 16px 110px;         /* deja espacio para el solape de la card */
+  padding: 28px 16px 120px;         /* espacio para el solape de la card */
   border-radius: 26px;
-  background:
-    linear-gradient(180deg, #0f2f49 0%, #123a54 100%),
-    #0f2f49;
+  background: linear-gradient(180deg, #0f2f49 0%, #123a54 100%);
   color: #fff;
   box-shadow: 0 8px 24px rgba(15, 47, 73, .18);
   overflow: hidden;
 }
 
-/* Logo centrado */
+/* Logo centrado (círculo) */
 .hero-logo{
-  width: 112px;
-  height: 112px;
+  width: 120px;
+  height: 120px;
   border-radius: 999px;
   background-size: cover;
   background-position: center;
   box-shadow: 0 10px 26px rgba(0,0,0,.24);
-  z-index: 1;
+  z-index: 3;
+  border: 6px solid rgba(255,255,255,.95); /* borde blanco para resaltar */
 }
 
 /* Marca */
@@ -38,39 +37,42 @@
   margin: 10px 0 4px;
   font-weight: 800;
   letter-spacing: .2px;
-  line-height: 1.1;
-  font-size: clamp(26px, 6vw, 40px);
-  z-index: 1;
+  line-height: 1.05;
+  font-size: clamp(24px, 5.6vw, 36px);
+  z-index: 3;
+  text-align:center;
 }
 .brand .lex { color: #ffffff; }
 .brand .accent { color: #2bb7a7; }
 
-/* Frase */
+/* Frase / tagline (más visible) */
 .tagline{
-  margin: 0;
+  margin: 8px 0 0;
   text-align: center;
-  color: rgba(255,255,255,.92);
-  font-size: clamp(14px, 3.9vw, 18px);
+  color: rgba(255,255,255,.95);
+  font-size: clamp(14px, 3.6vw, 18px);
   line-height: 1.4;
-  padding: 0 8px;
-  z-index: 1;
+  padding: 0 12px;
+  z-index: 3;
+  max-width: 86%;
 }
 
 /* Tarjeta de botones solapada y centrada */
 .hero-card{
   max-width: 560px;
   width: min(92%, 560px);
-  margin: -68px auto 0;             /* sube y solapa bajo el header */
+  margin: -72px auto 0;             /* sube y solapa bajo el header */
   background: #ffffff;
   border-radius: 20px;
-  padding: 18px 16px 16px;
+  padding: 18px 18px 20px;
   box-shadow: 0 18px 40px rgba(16,24,40,.16);
   display: grid;
   gap: 12px;
   z-index: 2;
+  align-items: center;
 }
 
-/* Botones */
+/* Botones (limpios y adaptables) */
 .btn{
   width: 100%;
   border-radius: 999px;
@@ -79,10 +81,11 @@
   background: #fff;
   color: #0f2f49;
   font-weight: 700;
-  font-size: clamp(15px, 4.2vw, 18px);
+  font-size: clamp(15px, 3.8vw, 18px);
   text-align: center;
   text-decoration: none;
-  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+  transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+  box-sizing: border-box;
 }
 .btn.primary{
   background: #0f2f49;
@@ -90,24 +93,29 @@
   border-color: #0f2f49;
 }
 .btn:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(15,47,73,.14);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(15,47,73,.14);
 }
 
 /* Link invitado */
 .link-invite{
   justify-self: center;
-  margin-top: 4px;
+  margin-top: 2px;
   color: #0a66ff;
   text-decoration: underline;
-  font-weight: 600;
-  font-size: 15.5px;
+  font-weight: 700;
+  font-size: clamp(14px, 3.6vw, 16px);
 }
 
 /* Ajustes en pantallas grandes */
 @media (min-width: 900px){
   .hero-top{ min-height: 46vh; padding-bottom: 120px; }
-  .hero-logo{ width: 124px; height: 124px; }
-  .hero-card{ margin-top: -76px; }
+  .hero-logo{ width: 140px; height: 140px; }
+  .hero-card{ margin-top: -76px; padding: 20px 24px 24px; }
+  .brand{ font-size: 40px; }
+  .tagline{ font-size: 16px; max-width: 720px; }
 }
+
+/* seguridad extra: evita que la tarjeta empuje el header */
+.welcome-hero, .hero-top, .hero-card { -webkit-font-smoothing:antialiased; }
 
