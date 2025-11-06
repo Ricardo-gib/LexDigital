@@ -4,17 +4,16 @@ export default function Home() {
 
   el.innerHTML = `
     <header class="hero-top">
-      <img
+      <div
         class="hero-logo"
-        src="assets/icon_512.png?v=17"
-        alt="LexDigital"
-        width="180" height="180"
-        loading="eager"
-      />
+        style="background-image:url('assets/icon_512.png?v=19')"
+        role="img" aria-label="LexDigital"
+      ></div>
+
       <h1 class="brand">
         <span class="strong">Lex</span><span class="accent">Digital</span>
       </h1>
-      <p class="tagline">Asesoría legal clara, rápida y confiable para tu día a día.</p>
+      <p class="tagline">Tu aliado legal inteligente. Rápido, seguro y a tu alcance.</p>
     </header>
 
     <div class="hero-card">
@@ -23,6 +22,5 @@ export default function Home() {
       <a class="link-invite" href="#home?guest=1">Acceder como invitado</a>
     </div>
   `;
-
   return el;
 }
