@@ -7,7 +7,7 @@ export default function AbogadoLex() {
     <div class="app-card full-card">
       <header class="app-hero">
         <div class="avatar large" aria-hidden="true">
-          <img src="assets/icon_512.png?v=25" alt="Logo LexDigital" />
+          <img src="assets/icon_1024.png?v=25" alt="Logo LexDigital" />
         </div>
         <h1 class="app-title">
           Abogado<br><span>LexDigital</span>
