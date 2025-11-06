@@ -5,10 +5,8 @@ import {
   GoogleAuthProvider,
   signInWithRedirect,
   getRedirectResult,
-  signInWithPopup
 } from 'https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js';
 
-// === CONFIGURACIÓN DE FIREBASE ===
 const firebaseConfig = {
   apiKey: "AIzaSyBce-UDqi6xgPeIWBYeQzdWQ-_QrAQFS2s",
   authDomain: "lexdigital-prod-88295.firebaseapp.com",
@@ -19,35 +17,32 @@ const firebaseConfig = {
   measurementId: "G-9PRTVW089T"
 };
 
-// Inicializar
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-// 🔹 Intenta con Redirect, si falla usa Popup (útil para móvil)
+// Evita doble inicio (clicks repetidos)
+let _signinPending = false;
+
 export async function signInWithGoogle() {
-  try {
-    await signInWithRedirect(auth, provider);
-  } catch (err) {
-    console.warn('[Redirect failed, trying popup]', err);
-    try {
-      await signInWithPopup(auth, provider);
-    } catch (popupErr) {
-      console.error('[Popup error]', popupErr);
-      alert('No se pudo abrir Google: ' + popupErr.message);
-    }
-  }
+  if (_signinPending) return;
+  _signinPending = true;
+  sessionStorage.setItem('lexdigital_auth_redirect', '1'); // marca para saber que fuimos a Google
+  await signInWithRedirect(auth, provider);
 }
 
-// Manejo de retorno desde redirect
 export async function handleRedirectResult() {
   try {
-    const result = await getRedirectResult(auth);
-    if (result?.user) console.log('[Firebase] Usuario autenticado:', result.user.email);
-    return result;
+    const res = await getRedirectResult(auth);
+    // Limpia la marca (hayamos recibido res o no)
+    sessionStorage.removeItem('lexdigital_auth_redirect');
+    return res;
   } catch (err) {
+    sessionStorage.removeItem('lexdigital_auth_redirect');
     console.error('[RedirectResult error]', err);
     return null;
+  } finally {
+    _signinPending = false;
   }
 }
 
