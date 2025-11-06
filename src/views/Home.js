@@ -11,9 +11,9 @@ export default function Home() {
       ></div>
 
       <h1 class="brand">
-        <span class="strong">Lex</span><span class="accent">Digital</span>
+        <span>Lex</span><span class="accent">Digital</span>
       </h1>
-      <p class="tagline">Tu aliado legal inteligente. Rápido, seguro y a tu alcance.</p>
+      <p class="tagline">Abogacía experta. Respuesta inmediata.</p>
     </header>
 
     <div class="hero-card">
@@ -22,5 +22,6 @@ export default function Home() {
       <a class="link-invite" href="#home?guest=1">Acceder como invitado</a>
     </div>
   `;
+  
   return el;
 }
