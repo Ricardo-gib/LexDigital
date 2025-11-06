@@ -2,6 +2,7 @@ export default function Home() {
   const el = document.createElement('section');
   el.className = 'welcome-hero';
 
+  // 👇 OBLIGATORIO: template string con backticks `
   el.innerHTML = `
     <header class="hero-top">
       <div
@@ -24,11 +25,14 @@ export default function Home() {
     </div>
   `;
 
-  // 👇 Forzar navegación por si algún handler bloquea los <a>
+  // Forzar navegación por si algún handler bloquea los <a>
   el.querySelector('#goLogin')?.addEventListener('click', (e) => {
     e.preventDefault();
     location.hash = '#/login';
   });
+
+  // Smoke test (para verificar que cargó este archivo nuevo)
+  console.log('HOME v31 listo');
 
   return el;
 }
