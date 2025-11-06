@@ -1,3 +1,6 @@
+/* ===== Fix global para altura completa ===== */
+html, body { height: 100%; }
+
 /* ===== Home (Landing) – versión final ===== */
 .welcome-hero{
   max-width: 980px;
@@ -59,7 +62,7 @@
 .hero-card{
   max-width: 560px;
   width: min(92%, 560px);
-  margin: 28px auto 0;              /* queda en el área blanca */
+  margin: 28px auto 0;
   background: #fff;
   border-radius: 22px;
   padding: 24px 18px 18px;
@@ -156,37 +159,53 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  min-height:100svh; /* mejor en móviles con barras dinámicas */
-  padding:16px;      /* margen de respiración en pantallas pequeñas */
+  /* 100svh maneja barras dinámicas de móvil mejor que 100vh */
+  min-height:100svh;
+  /* quitar límites/padding de .screen cuando es fullscreen */
+  max-width:none;
+  padding:0;
   background:#f7fafc;
 }
 .full-card{
   width:100%;
-  max-width:420px;         /* un poco más ancho para móviles modernos */
-  border-radius:30px;
-  padding:30px 22px 40px;
-  box-shadow:0 25px 55px rgba(0,0,0,0.12);
+  max-width:520px;         /* ancho cómodo en teléfonos grandes */
+  /* altura completa de pantalla */
+  min-height:100svh;
+  border-radius:0;         /* edge-to-edge en móvil */
+  padding:28px 18px 32px;
+  box-shadow:none;         /* sin sombra para pantalla completa */
   background:#ffffff;
   text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
 }
+
 .app-hero .avatar.large{
-  width:120px;
-  height:120px;
-  margin:0 auto 14px;
+  width:120px; height:120px;
+  margin:8px auto 14px;
   border-radius:50%;
   overflow:hidden;
-  box-shadow:0 0 0 6px rgba(43,183,167,0.25), 0 6px 18px rgba(15,47,73,0.12);
+  box-shadow:0 0 0 6px rgba(43,183,167,0.25);
 }
 .app-hero .avatar.large img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+  width:100%; height:100%; object-fit:cover;
 }
+
 .large-menu{ display:grid; gap:16px; }
 
-/* Reutilizamos .pill-btn: aquí sólo afinamos el hover */
+/* Hover afinado (reutiliza .pill-btn) */
 .pill-btn:hover{
   background:#0f2f49;
   color:#fff;
   transform:translateY(-2px);
+}
+
+/* ===== Edge-to-edge sólo en móviles pequeños ===== */
+@media (max-width: 480px){
+  .full-card{
+    max-width:none;      /* ocupa todo el ancho */
+    border-radius:0;
+    padding:28px 16px 32px;
+  }
 }
