@@ -1,4 +1,4 @@
-export default function Home({ V = '26' } = {}) {
+export default function Home({ V = '28' } = {}) {
   const el = document.createElement('section');
   el.className = 'welcome-hero';
 
