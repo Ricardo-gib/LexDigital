@@ -3,10 +3,26 @@ import Home from './views/Home.js';
 import Login from './views/Login.js';
 import Register from './views/Register.js';
 
+// NUEVO: importa el dashboard y las secciones
+import AbogadoLex from './views/AbogadoLex.js';
+import Abogado from './views/Abogado.js';
+import Contratos from './views/Contratos.js';
+import Cursos from './views/Cursos.js';
+import Planes from './views/Planes.js';
+
 const routes = {
   '/': Home, 'home': Home, '/home': Home, 'inicio': Home, '/inicio': Home,
   'login': Login, '/login': Login,
   'register': Register, '/register': Register,
+
+  // NUEVO: dashboard de invitado
+  'abogadolex': AbogadoLex, '/abogadolex': AbogadoLex,
+
+  // NUEVO: subsecciones
+  'abogado': Abogado, '/abogado': Abogado,
+  'contratos': Contratos, '/contratos': Contratos,
+  'cursos': Cursos, '/cursos': Cursos,
+  'planes': Planes, '/planes': Planes,
 };
 
 function normalizeRoute(rawHash) {
@@ -19,10 +35,7 @@ function pickView(path) {
 }
 
 function renderTo(mount, out) {
-  if (out instanceof Node) {
-    mount.replaceChildren(out);
-    return;
-  }
+  if (out instanceof Node) { mount.replaceChildren(out); return; }
   if (out && typeof out === 'object' && 'html' in out) {
     const wrap = document.createElement('div');
     wrap.innerHTML = out.html;
@@ -42,9 +55,7 @@ function renderTo(mount, out) {
 export default function router(navigateTo) {
   const mount = document.getElementById('app');
   const path = normalizeRoute(navigateTo ?? location.hash);
-
   console.log('[ROUTER] path ->', path);
-
   try {
     const View = pickView(path);
     const out = View();
@@ -61,4 +72,3 @@ Ruta: ${path}
 
 window.addEventListener('hashchange', () => router());
 window.addEventListener('DOMContentLoaded', () => router('/'));
-
