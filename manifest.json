@@ -9,8 +9,8 @@
   "theme_color": "#0f2f49",
 
   "icons": [
-    { "src": "assets/icon-192.png?v=36", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "assets/icon_512.png?v=36", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "assets/icon_1024.png?v=36", "sizes": "1024x1024", "type": "image/png", "purpose": "maskable" }
+    { "src": "assets/profile_192.jpg?v=37",  "sizes": "192x192",  "type": "image/jpeg", "purpose": "any maskable" },
+    { "src": "assets/profile_512.jpg?v=37",  "sizes": "512x512",  "type": "image/jpeg", "purpose": "any maskable" },
+    { "src": "assets/profile_1024.jpg?v=37", "sizes": "1024x1024", "type": "image/jpeg", "purpose": "any maskable" }
   ]
 }
