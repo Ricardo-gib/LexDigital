@@ -18,10 +18,17 @@ export default function Home() {
     </header>
 
     <div class="hero-card">
-      <a class="btn primary" href="#/login">Acceder con correo</a>
+      <a class="btn primary" id="goLogin" href="#/login">Acceder con correo</a>
       <a class="btn" href="#/register">Registrarme</a>
       <a class="link-invite" href="#/home?guest=1">Acceder como invitado</a>
     </div>
   `;
+
+  // 👇 Forzar navegación por si algún handler bloquea los <a>
+  el.querySelector('#goLogin')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    location.hash = '#/login';
+  });
+
   return el;
 }
