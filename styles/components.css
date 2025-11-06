@@ -12,7 +12,7 @@
   display: grid;
   place-items: center;
   grid-template-rows: auto auto auto;
-  padding: 28px 16px 120px;         /* espacio para el solape de la card */
+  padding: 28px 16px 156px;         /* espacio para el solape de la card */
   border-radius: 26px;
   background: linear-gradient(180deg, #0f2f49 0%, #123a54 100%);
   color: #fff;
@@ -61,7 +61,7 @@
 .hero-card{
   max-width: 560px;
   width: min(92%, 560px);
-  margin: -72px auto 0;             /* sube y solapa bajo el header */
+  margin: -24px auto 0;             /* sube y solapa bajo el header */
   background: #ffffff;
   border-radius: 20px;
   padding: 18px 18px 20px;
