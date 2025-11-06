@@ -1,69 +1,70 @@
 /* =========================
-   Home (landing) – REWORK v2
+   Home (landing) – 50/50
    ========================= */
 .welcome-hero{
   min-height: 100vh;
   display: grid;
-  grid-template-rows: 60vh auto;   /* 60% header, resto botones */
+  grid-template-rows: 50vh auto;   /* 50% header, 50% contenido */
   margin: 0;
   padding: 0;
 }
 
-/* Header ocupa 60% de la pantalla */
+/* Mitad superior azul */
 .hero-top{
   position: relative;
-  min-height: 60vh;
-  padding: 28px 20px 24px;
+  min-height: 50vh;
+  padding: 28px 20px 20px;
   text-align: center;
   color: #fff;
-  background: linear-gradient(180deg, #0f2f49 0%, #113a56 85%);
+  background: linear-gradient(180deg, #0f2f49 0%, #113a56 100%);
   border-radius: 0 0 24px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 12px 26px rgba(15,47,73,.16);
 }
 
-/* sin diagonal que tapa */
-.hero-top::after { content: none; }
+/* quita cualquier overlay que tape el logo */
+.hero-top::after{ content:none; }
 
-/* LOGO: que se vea sí o sí */
+/* LOGO visible y por encima de todo */
 .hero-logo{
-  width: 168px;          /* más grande */
-  height: 168px;
+  width: 180px;
+  height: 180px;
   border-radius: 999px;
-  margin: 6px auto 14px;
+  margin: 6px auto 12px;
   display: block;
-  background: none;      /* quitamos fondo oscuro */
-  object-fit: contain;   /* la imagen completa dentro */
+  object-fit: contain;
+  background: transparent;
+  filter: none;
+  mix-blend-mode: normal;
+  position: relative;
+  z-index: 2;              /* clave para estar sobre el fondo */
   box-shadow: 0 8px 22px rgba(0,0,0,.18);
 }
 
-/* Marca y acento */
+/* Marca y acentos */
 .brand{
-  margin: 6px 0 8px;
+  margin: 4px 0 8px;
   font-size: 30px;
-  line-height: 1.15;
   font-weight: 800;
-  color: #ffffff;
+  line-height: 1.12;
   letter-spacing: .2px;
 }
-.brand .accent{ color: #2bb7a7; }
+.brand .strong{ color:#ffffff; }
+.brand .accent{ color:#2bb7a7; }
 
-/* Subtítulo visible */
 .tagline{
   margin: 0;
-  padding: 0 18px;
   font-size: 16px;
   line-height: 1.45;
   color: rgba(255,255,255,.96);
 }
 
-/* Card de acciones bien despejado y sin solapar */
+/* Tarjeta inferior sin tapar botones */
 .hero-card{
   grid-row: 2;
-  margin: -16px 16px 20px;      /* pequeño “overlap” sin tapar botón */
+  margin: 16px auto 20px;          /* sin solape */
   background: #fff;
   border-radius: 20px;
   padding: 18px 16px 14px;
@@ -71,11 +72,10 @@
   width: calc(100% - 32px);
   box-shadow: 0 14px 32px rgba(16, 24, 40, .12);
   display: grid;
-  gap: 12px;
-  justify-self: center;
+  gap: 14px;
 }
 
-/* Botones */
+/* Botones más consistentes */
 .btn{
   width: 100%;
   border-radius: 999px;
@@ -93,22 +93,18 @@
   border-color: #0f2f49;
 }
 
-/* Enlace invitado bien visible sin scroll */
 .link-invite{
   justify-self: center;
-  margin-top: 6px;
-  margin-bottom: 2px;
+  margin-top: 4px;
   color: #0a66ff;
   text-decoration: underline;
   font-weight: 600;
 }
 
-/* Ajustes para pantallas muy pequeñas */
+/* Ajustes para pantallas pequeñas */
 @media (max-width: 360px), (max-height: 700px){
-  .welcome-hero{ grid-template-rows: 56vh auto; }
-  .hero-logo{ width: 150px; height: 150px; }
+  .hero-logo{ width: 160px; height: 160px; }
   .brand{ font-size: 28px; }
   .tagline{ font-size: 15px; }
-  .hero-card{ margin: -14px 14px 18px; }
 }
 
