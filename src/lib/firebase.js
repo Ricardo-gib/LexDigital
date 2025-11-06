@@ -1,10 +1,14 @@
 // src/lib/firebase.js
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js';
 import {
-  getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult
+  getAuth,
+  GoogleAuthProvider,
+  signInWithRedirect,
+  getRedirectResult,
+  signInWithPopup
 } from 'https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js';
 
-// === TU CONFIG DE FIREBASE (la que copiaste de la consola) ===
+// === CONFIGURACIÓN DE FIREBASE ===
 const firebaseConfig = {
   apiKey: "AIzaSyBce-UDqi6xgPeIWBYeQzdWQ-_QrAQFS2s",
   authDomain: "lexdigital-prod-88295.firebaseapp.com",
@@ -15,20 +19,35 @@ const firebaseConfig = {
   measurementId: "G-9PRTVW089T"
 };
 
-// Init
-const app  = initializeApp(firebaseConfig);
+// Inicializar
+const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-
-// Proveedor Google
 const provider = new GoogleAuthProvider();
 
-// Abre selector de cuenta de Google
-export function signInWithGoogle(){
-  return signInWithRedirect(auth, provider);
+// 🔹 Intenta con Redirect, si falla usa Popup (útil para móvil)
+export async function signInWithGoogle() {
+  try {
+    await signInWithRedirect(auth, provider);
+  } catch (err) {
+    console.warn('[Redirect failed, trying popup]', err);
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (popupErr) {
+      console.error('[Popup error]', popupErr);
+      alert('No se pudo abrir Google: ' + popupErr.message);
+    }
+  }
 }
 
-// Maneja el retorno del redirect (cuando Google vuelve a tu sitio)
-export async function handleRedirectResult(){
-  try { return await getRedirectResult(auth); }
-  catch(e){ console.error('[GoogleRedirectError]', e); return null; }
+// Manejo de retorno desde redirect
+export async function handleRedirectResult() {
+  try {
+    const result = await getRedirectResult(auth);
+    if (result?.user) console.log('[Firebase] Usuario autenticado:', result.user.email);
+    return result;
+  } catch (err) {
+    console.error('[RedirectResult error]', err);
+    return null;
+  }
 }
+
