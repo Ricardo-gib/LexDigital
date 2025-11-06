@@ -1,4 +1,4 @@
-export default function Home({ V = '28' } = {}) {
+export default function Home() {
   const el = document.createElement('section');
   el.className = 'welcome-hero';
 
@@ -6,7 +6,7 @@ export default function Home({ V = '28' } = {}) {
     <header class="hero-top">
       <div
         class="hero-logo"
-        style="background-image:url('assets/icon_512.png?v=${V}')"
+        style="background-image:url('assets/icon_512.png?v=23')"
         role="img" aria-label="LexDigital"
       ></div>
 
