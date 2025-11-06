@@ -7,23 +7,25 @@
 
   <!-- PWA -->
   <meta name="theme-color" content="#0f2f49" />
-  <link rel="manifest" href="manifest.json?v=36" />
+  <link rel="manifest" href="manifest.json?v=37" />
+  <!-- iOS / icono del springboard: usa tu perfil -->
+  <link rel="apple-touch-icon" href="assets/profile_512.jpg?v=37" />
 
   <!-- Estilos (cache-busting) -->
-  <link rel="stylesheet" href="styles/base.css?v=36" />
-  <link rel="stylesheet" href="styles/components.css?v=36" />
+  <link rel="stylesheet" href="styles/base.css?v=37" />
+  <link rel="stylesheet" href="styles/components.css?v=37" />
 </head>
 <body>
   <div id="app"></div>
 
   <!-- App -->
-  <script type="module" src="src/main.js?v=36"></script>
+  <script type="module" src="src/main.js?v=37"></script>
 
   <!-- Registrar Service Worker con scope relativo a /LexDigital/ -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js?v=36').catch(console.error);
+        navigator.serviceWorker.register('./sw.js?v=37').catch(console.error);
       });
     }
   </script>
