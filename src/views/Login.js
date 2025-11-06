@@ -11,8 +11,8 @@ export default function Login(){
         <p class="muted">Elige tu método de acceso</p>
         <div class="grid">
           <button class="btn primary" id="btnGoogle">Acceder con Google</button>
-          <a class="btn" href="#register">Registrarme con correo</a>
-          <a class="btn" href="#home?guest=1">Entrar como invitado</a>
+          <a class="btn" href="#/register">Registrarme con correo</a>
+          <a class="btn" href="#/home?guest=1">Entrar como invitado</a>
         </div>
         <p class="muted" id="msg" style="margin-top:8px"></p>
       </div>
@@ -27,8 +27,7 @@ export default function Login(){
   // Si el redirect volvió desde Google, aquí se resuelve
   handleRedirectResult().then(() => {
     if (auth.currentUser) {
-      // Ya logueado: llévalo a la pantalla principal
-      location.hash = '#home';
+      location.hash = '#/home';  // ojo: con slash
     }
   });
 
