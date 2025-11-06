@@ -1,11 +1,10 @@
 // src/lib/firebase.js
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js';
 import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithRedirect,
-  getRedirectResult,
+  getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult,
+  createUserWithEmailAndPassword, sendEmailVerification, updateProfile, signInWithEmailAndPassword
 } from 'https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js';
+import { getFirestore, doc, setDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBce-UDqi6xgPeIWBYeQzdWQ-_QrAQFS2s",
@@ -19,30 +18,43 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const db   = getFirestore(app);
+
 const provider = new GoogleAuthProvider();
+// provider.setCustomParameters({ prompt: 'select_account' }); // opcional
 
-// Evita doble inicio (clicks repetidos)
 let _signinPending = false;
-
-export async function signInWithGoogle() {
+export async function signInWithGoogle(){
   if (_signinPending) return;
   _signinPending = true;
-  sessionStorage.setItem('lexdigital_auth_redirect', '1'); // marca para saber que fuimos a Google
+  sessionStorage.setItem('lexdigital_auth_redirect', '1');
   await signInWithRedirect(auth, provider);
 }
 
-export async function handleRedirectResult() {
+export async function handleRedirectResult(){
   try {
     const res = await getRedirectResult(auth);
-    // Limpia la marca (hayamos recibido res o no)
-    sessionStorage.removeItem('lexdigital_auth_redirect');
     return res;
-  } catch (err) {
-    sessionStorage.removeItem('lexdigital_auth_redirect');
-    console.error('[RedirectResult error]', err);
-    return null;
   } finally {
+    sessionStorage.removeItem('lexdigital_auth_redirect');
     _signinPending = false;
   }
 }
+
+/* -------- Registro clásico -------- */
+export async function registerWithEmail({ name, age, email, password }){
+  const cred = await createUserWithEmailAndPassword(auth, email, password);
+  if (name) await updateProfile(cred.user, { displayName: name });
+  await setDoc(doc(db, 'users', cred.user.uid), {
+    name, age: Number(age) || null, email,
+    createdAt: serverTimestamp()
+  });
+  await sendEmailVerification(cred.user);
+  return cred.user;
+}
+
+export function loginWithEmail(email, password){
+  return signInWithEmailAndPassword(auth, email, password);
+}
+
 
