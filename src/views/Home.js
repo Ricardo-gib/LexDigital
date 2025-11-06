@@ -17,7 +17,7 @@ export default function Home() {
     <div class="hero-card">
       <button class="btn primary" type="button" id="googleNow">Acceder con correo</button>
       <a class="btn" href="#/register">Registrarme</a>
-      <a class="link-invite" href="#/home?guest=1">Acceder como invitado</a>
+      <a class="link-invite" href="#/abogadolex">Acceder como invitado</a>
       <p class="muted" id="msg" style="margin-top:8px"></p>
     </div>
   `;
