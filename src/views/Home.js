@@ -6,7 +6,7 @@ export default function Home() {
     <header class="hero-top">
       <div
         class="hero-logo"
-        style="background-image:url('assets/icon_512.png?v=21')"
+        style="background-image:url('assets/icon_512.png?v=22')"
         role="img" aria-label="LexDigital"
       ></div>
 
