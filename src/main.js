@@ -1,20 +1,12 @@
-// Forzar cache-bust de todos los módulos
-const V = '28';
+// src/main.js
+import router from './router.js';
 
-function mount(el) {
-  const app = document.getElementById('app');
-  app.innerHTML = '';
-  app.appendChild(el);
+console.log('[MAIN] init');
+
+function go() {
+  console.log('[MAIN] hashchange/domcontentloaded -> router()');
+  router();
 }
 
-// Router mínimo solo para Home (ajústalo si tienes más vistas)
-async function render() {
-  // import dinámico con query ?v=... para bustear caché del módulo
-  const mod = await import(`./views/Home.js?v=${V}`);
-  const view = mod.default({ V });
-  mount(view);
-}
-
-window.addEventListener('hashchange', render);
-render();
-
+window.addEventListener('hashchange', go);
+window.addEventListener('DOMContentLoaded', () => router('/')); // carga inicial
