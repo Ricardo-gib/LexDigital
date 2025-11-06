@@ -67,14 +67,18 @@ body { margin: 0; }
   padding: calc(14px + env(safe-area-inset-top)) 16px calc(22px + env(safe-area-inset-bottom));
 }
 .app-hero .avatar.large{
-  /* Logo fluido: de 88px a 144px según ancho */
-  width: clamp(88px, 24vw, 144px);
-  height: clamp(88px, 24vw, 144px);
-  margin: 6px auto 12px; border-radius:50%; overflow:hidden;
+  width: clamp(160px, 34vw, 220px);
+  height: clamp(160px, 34vw, 220px);
+  margin: 6px auto 14px;
+  border-radius: 50%;
+  overflow: hidden;
   box-shadow: 0 0 0 6px rgba(43,183,167,0.25);
 }
-.app-hero .avatar.large img{ width:100%; height:100%; object-fit:cover; }
-
+.app-hero .avatar.large img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 /* Título y menú fluidos */
 .full-card .app-title{
   margin: 2px 0 14px;
