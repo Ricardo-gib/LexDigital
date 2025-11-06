@@ -1,50 +1,69 @@
-/* === HOME (Landing) — versión limpia y acotada === */
-
+/* =========================
+   Home (landing) – REWORK
+   ========================= */
 .welcome-hero{
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 24px 16px 40px;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;   /* header ocupa arriba, card abajo */
+  margin: 0;
+  padding: 0;
 }
 
-.welcome-hero .hero-top{
+/* Header con ~50% de la pantalla */
+.hero-top{
   position: relative;
-  border-radius: 22px;
-  padding: 36px 16px 88px;
+  min-height: 52vh;               /* ≈ mitad de la pantalla */
+  padding: 48px 20px;
   text-align: center;
   color: #fff;
-  background: linear-gradient(180deg, #0f2f49 0%, #113a56 65%, #ffffff 65%);
+  background: linear-gradient(180deg, #0f2f49 0%, #113a56 80%);
+  border-radius: 24px 24px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 12px 26px rgba(15,47,73,.16);
 }
 
-.welcome-hero .hero-logo{
-  width: 104px;
-  height: 104px;
+/* Quitamos la “diagonal blanca” que tapaba */
+.hero-top::after { content: none; }
+
+/* Logo más grande */
+.hero-logo{
+  width: 140px;
+  height: 140px;
   border-radius: 999px;
-  margin: 12px auto 10px;
+  margin: 6px auto 12px;
   display: block;
   background: #0f2f49;
-  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  box-shadow: 0 8px 22px rgba(0,0,0,.2);
+  object-fit: cover;
 }
 
-.welcome-hero .brand{
+/* Marca y acento */
+.brand{
   margin: 6px 0 6px;
-  font-size: 26px;
+  font-size: 28px;
   line-height: 1.15;
   font-weight: 800;
   color: #ffffff;
   letter-spacing: .2px;
 }
-.welcome-hero .brand .accent{ color: #2bb7a7; }
+.brand .accent{ color: #2bb7a7; }
 
-.welcome-hero .tagline{
+/* Subtítulo visible sobre el fondo oscuro */
+.tagline{
   margin: 0;
-  font-size: 14.5px;
-  opacity: .95;
+  padding: 0 16px;
+  font-size: 15.5px;
+  line-height: 1.45;
+  color: rgba(255,255,255,.95);
 }
 
-/* Tarjeta inferior */
+/* Card de acciones ANCLADO ABAJO */
 .hero-card{
-  margin: -64px auto 0;
+  grid-row: 2;                    /* ocupa la fila inferior */
+  margin: -28px 16px 20px;        /* se “asoma” un poco sobre el header */
   background: #fff;
   border-radius: 20px;
   padding: 18px 16px 14px;
@@ -52,10 +71,12 @@
   box-shadow: 0 14px 32px rgba(16, 24, 40, .12);
   display: grid;
   gap: 12px;
+  justify-self: center;
+  width: calc(100% - 32px);
 }
 
-/* Botones SOLO en la Home (no toques .btn global) */
-.hero-card .btn{
+/* Botones */
+.btn{
   width: 100%;
   border-radius: 999px;
   padding: 14px 16px;
@@ -63,19 +84,20 @@
   background: #fff;
   color: #0f2f49;
   font-weight: 700;
+  text-align: center;
+  text-decoration: none;
 }
-.hero-card .btn.primary{
+.btn.primary{
   background: #0f2f49;
   color: #fff;
   border-color: #0f2f49;
 }
 
-/* Enlace de invitado dentro de la tarjeta */
-.hero-card .link-invite{
+/* Enlace de invitado */
+.link-invite{
   justify-self: center;
   margin-top: 4px;
   color: #0a66ff;
   text-decoration: underline;
   font-weight: 600;
 }
-
