@@ -57,11 +57,11 @@
   z-index: 1;
 }
 
-/* Tarjeta de acciones */
 .hero-card{
   max-width: 560px;
   width: min(92%, 560px);
-  margin: -84px auto 0;            /* solapa, pero deja ver el botón completo */
+  /* Antes: margin: -84px auto 0;  ← esto lo subía demasiado */
+  margin: 28px auto 0;              /* ahora baja y queda en el área blanca */
   background: #fff;
   border-radius: 22px;
   padding: 24px 18px 18px;
@@ -70,6 +70,7 @@
   gap: 12px;
   z-index: 2;
 }
+
 
 /* Botones */
 .btn{
@@ -105,10 +106,10 @@
   font-size: 15.5px;
 }
 
-/* Desktop */
 @media (min-width: 900px){
   .hero-top{ min-height: 50vh; padding-bottom: 160px; }
   .hero-logo{ width: 164px; height: 164px; }
-  .hero-card{ margin-top: -92px; padding: 26px 20px 20px; }
+  /* Antes: .hero-card{ margin-top: -92px; padding: 26px 20px 20px; } */
+  .hero-card{ margin-top: 20px; padding: 26px 20px 22px; }
 }
 
