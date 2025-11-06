@@ -19,33 +19,39 @@ export default function Login(){
     </div>
   `;
 
+  const btn = el.querySelector('#btnGoogle');
   const msg = el.querySelector('#msg');
 
-  el.querySelector('#btnGoogle')?.addEventListener('click', async () => {
-    msg.textContent = 'Redirigiendo a Google…';
+  btn?.addEventListener('click', async () => {
     try {
-      await signInWithGoogle(); // abre redirect/popup
+      btn.disabled = true;
+      btn.textContent = 'Abriendo Google…';
+      msg.textContent = 'Redirigiendo a Google…';
+      await signInWithGoogle(); // solo redirect
+      // Nota: después de esto el navegador va a Google; no hay más código
     } catch (e) {
+      btn.disabled = false;
+      btn.textContent = 'Acceder con Google';
+      msg.textContent = 'No se pudo abrir Google.';
       console.error('[GoogleSignInError]', e);
-      msg.textContent = 'No se pudo abrir Google: ' + (e?.message || e);
     }
   });
 
+  // Si venimos de Google, manejar el retorno
   handleRedirectResult()
-    .then((res) => {
+    .then(() => {
       if (auth.currentUser) {
         msg.textContent = '¡Autenticado como ' + (auth.currentUser.email || auth.currentUser.uid) + '!';
         location.hash = '#/home';
-      } else if (res === null) {
+      } else {
+        // Si no venimos de redirect, deja el mensaje vacío
         msg.textContent = '';
       }
     })
     .catch(e => {
       console.error('[RedirectResultError]', e);
-      msg.textContent = 'Error al regresar de Google: ' + (e?.message || e);
+      msg.textContent = 'Error al regresar de Google.';
     });
 
-  console.log('[LOGIN] vista montada');
   return el;
 }
-
