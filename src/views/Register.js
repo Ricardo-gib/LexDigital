@@ -1,4 +1,3 @@
-// src/views/Register.js
 import { registerWithEmail, loginWithEmail, auth } from '../lib/firebase.js';
 
 export default function Register(){
@@ -53,8 +52,7 @@ export default function Register(){
     try {
       const user = await registerWithEmail({ name, age, email, password: pass });
       msg.textContent = `Cuenta creada. Te enviamos un correo de verificación a ${user.email}.`;
-      // Si quieres forzar login inmediato, ya estás logueado tras crear la cuenta.
-      // Puedes llevar al home:
+
       location.hash = '#/home';
     } catch (err) {
       console.error(err);
