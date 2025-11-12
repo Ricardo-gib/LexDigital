@@ -6,7 +6,7 @@ export default function Abogado(){
     <div class="card">
       <h1>Mis Abogados LexDigital</h1>
       <div class="grid">
-        <!-- Abogada 1 -->
+      
         <div class="card">
           <div class="card-body">
             <img class="card-img" src="assets/abogada1.png" alt="Foto abogada 1" style="width:64px;height:64px;border-radius:50%;object-fit:cover">
@@ -21,7 +21,6 @@ export default function Abogado(){
           </div>
         </div>
 
-        <!-- Abogado 2 -->
         <div class="card">
           <div class="card-body">
             <img class="card-img" src="assets/abogado2.png" alt="Foto abogado 2" style="width:64px;height:64px;border-radius:50%;object-fit:cover">
@@ -36,7 +35,6 @@ export default function Abogado(){
           </div>
         </div>
 
-        <!-- Abogada 3 -->
         <div class="card">
           <div class="card-body">
             <img class="card-img" src="assets/abogada3.png" alt="Foto abogada 3" style="width:64px;height:64px;border-radius:50%;object-fit:cover">
@@ -51,7 +49,6 @@ export default function Abogado(){
           </div>
         </div>
 
-        <!-- Abogado 4 -->
         <div class="card">
           <div class="card-body">
             <img class="card-img" src="assets/abogado4.png" alt="Foto abogado 4" style="width:64px;height:64px;border-radius:50%;object-fit:cover">
