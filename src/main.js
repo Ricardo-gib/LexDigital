@@ -9,7 +9,7 @@ onAuthStateChanged(auth, (user) => {
   const path = (location.hash || '').replace(/^#/, '');
   if (user) {
     if (!user.emailVerified && path !== '/register' && path !== 'register') {
-      // aquí podrías mostrar un aviso para que confirme su correo
+   
       console.log('Usuario no verificado:', user.email);
     }
   }
