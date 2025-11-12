@@ -8,7 +8,6 @@ import Contratos from './views/Contratos.js';
 import Cursos from './views/Cursos.js';
 import Planes from './views/Planes.js';
 
-// Abogados
 import Maylee from './views/Dra. Maylee.js';
 import Laura from './views/Dra. Laura.js';
 import Franklin from './views/Dr. Franklin.js';
@@ -26,7 +25,6 @@ const routes = {
   'cursos': Cursos, '/cursos': Cursos,
   'planes': Planes, '/planes': Planes,
 
-  // Rutas de los abogados
   'dra-maylee': Maylee, '/dra-maylee': Maylee,
   'dra-laura': Laura, '/dra-laura': Laura,
   'dr-franklin': Franklin, '/dr-franklin': Franklin,
