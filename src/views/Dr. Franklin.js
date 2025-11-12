@@ -36,7 +36,6 @@ export default function Franklin() {
     </div>
   `;
 
-  // ---------- Lógica de modales ----------
   const openModal = (modalId) => {
     const modal = el.querySelector(`#${modalId}`);
     if (modal) modal.setAttribute('aria-hidden', 'false');
@@ -76,3 +75,4 @@ export default function Franklin() {
 
   return el;
 }
+
