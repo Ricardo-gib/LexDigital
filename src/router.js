@@ -8,6 +8,12 @@ import Contratos from './views/Contratos.js';
 import Cursos from './views/Cursos.js';
 import Planes from './views/Planes.js';
 
+// Abogados
+import Maylee from './views/Dra. Maylee.js';
+import Laura from './views/Dra. Laura.js';
+import Franklin from './views/Dr. Franklin.js';
+import Maricielo from './views/Dra. Maricielo.js';
+
 const routes = {
   '/': Home, 'home': Home, '/home': Home, 'inicio': Home, '/inicio': Home,
   'login': Login, '/login': Login,
@@ -19,6 +25,12 @@ const routes = {
   'contratos': Contratos, '/contratos': Contratos,
   'cursos': Cursos, '/cursos': Cursos,
   'planes': Planes, '/planes': Planes,
+
+  // Rutas de los abogados
+  'dra-maylee': Maylee, '/dra-maylee': Maylee,
+  'dra-laura': Laura, '/dra-laura': Laura,
+  'dr-franklin': Franklin, '/dr-franklin': Franklin,
+  'dra-maricielo': Maricielo, '/dra-maricielo': Maricielo,
 };
 
 function normalizeRoute(rawHash) {
@@ -26,6 +38,7 @@ function normalizeRoute(rawHash) {
   if (!raw || raw === '/') return '/';
   return raw.startsWith('/') ? raw : `/${raw}`;
 }
+
 function pickView(path) {
   return routes[path] || routes[path.replace(/^\//, '')] || Home;
 }
