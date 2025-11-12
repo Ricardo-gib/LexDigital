@@ -1,4 +1,3 @@
-// src/views/Login.js
 import { signInWithGoogle, handleRedirectResult, auth } from '../lib/firebase.js';
 
 export default function Login(){
@@ -27,8 +26,7 @@ export default function Login(){
       btn.disabled = true;
       btn.textContent = 'Abriendo Google…';
       msg.textContent = 'Redirigiendo a Google…';
-      await signInWithGoogle(); // solo redirect
-      // Nota: después de esto el navegador va a Google; no hay más código
+      await signInWithGoogle();
     } catch (e) {
       btn.disabled = false;
       btn.textContent = 'Acceder con Google';
@@ -37,14 +35,13 @@ export default function Login(){
     }
   });
 
-  // Si venimos de Google, manejar el retorno
   handleRedirectResult()
     .then(() => {
       if (auth.currentUser) {
         msg.textContent = '¡Autenticado como ' + (auth.currentUser.email || auth.currentUser.uid) + '!';
         location.hash = '#/home';
       } else {
-        // Si no venimos de redirect, deja el mensaje vacío
+        
         msg.textContent = '';
       }
     })
