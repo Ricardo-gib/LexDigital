@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
   const openModal = (modalId) => {
     const modal = document.getElementById(modalId);
@@ -42,3 +41,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
