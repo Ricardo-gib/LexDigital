@@ -1,6 +1,6 @@
 import TabBar from '../components/TabBar.js';
 
-export default function Abogado(){
+export default function Abogado() {
   const html = `
   <div class="container">
     <div class="card">
@@ -58,4 +58,15 @@ export default function Abogado(){
             </div>
           </div>
           <div style="display:flex;gap:8px;margin-top:12px">
-            <a class="btn primary">
+            <a class="btn primary" href="https://wa.me/51999999999?text=Hola%20necesito%20orientación" target="_blank">WhatsApp</a>
+            <a class="btn" href="#abogado-4-videollamada">Videollamada</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  ${TabBar('abogado')}
+  `;
+  return { html };
+}
+
