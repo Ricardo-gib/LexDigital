@@ -1,13 +1,11 @@
 import Home from './views/Home.js';
 import Login from './views/Login.js';
 import Register from './views/Register.js';
-
 import AbogadoLex from './views/AbogadoLex.js';
 import Abogado from './views/Abogado.js';
 import Contratos from './views/Contratos.js';
 import Cursos from './views/Cursos.js';
 import Planes from './views/Planes.js';
-
 import Maylee from './views/Dra. Maylee.js';
 import Laura from './views/Dra. Laura.js';
 import Franklin from './views/Dr. Franklin.js';
@@ -17,14 +15,11 @@ const routes = {
   '/': Home, 'home': Home, '/home': Home, 'inicio': Home, '/inicio': Home,
   'login': Login, '/login': Login,
   'register': Register, '/register': Register,
-
   'abogadolex': AbogadoLex, '/abogadolex': AbogadoLex,
-
   'abogado': Abogado, '/abogado': Abogado,
   'contratos': Contratos, '/contratos': Contratos,
   'cursos': Cursos, '/cursos': Cursos,
   'planes': Planes, '/planes': Planes,
-
   'dra-maylee': Maylee, '/dra-maylee': Maylee,
   'dra-laura': Laura, '/dra-laura': Laura,
   'dr-franklin': Franklin, '/dr-franklin': Franklin,
