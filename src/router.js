@@ -1,9 +1,7 @@
-// src/router.js
 import Home from './views/Home.js';
 import Login from './views/Login.js';
 import Register from './views/Register.js';
 
-// NUEVO: importa el dashboard y las secciones
 import AbogadoLex from './views/AbogadoLex.js';
 import Abogado from './views/Abogado.js';
 import Contratos from './views/Contratos.js';
@@ -15,10 +13,8 @@ const routes = {
   'login': Login, '/login': Login,
   'register': Register, '/register': Register,
 
-  // NUEVO: dashboard de invitado
   'abogadolex': AbogadoLex, '/abogadolex': AbogadoLex,
 
-  // NUEVO: subsecciones
   'abogado': Abogado, '/abogado': Abogado,
   'contratos': Contratos, '/contratos': Contratos,
   'cursos': Cursos, '/cursos': Cursos,
