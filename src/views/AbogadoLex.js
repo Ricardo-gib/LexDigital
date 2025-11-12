@@ -1,4 +1,3 @@
-// src/views/AbogadoLex.js
 export default function AbogadoLex() {
   const el = document.createElement('section');
   el.className = 'screen full-screen';
@@ -23,7 +22,6 @@ export default function AbogadoLex() {
     </div>
   `;
 
-  // asegurar viewport completo (alto y ancho) en móviles/incógnito
   Object.assign(el.style, { height: '100svh', minHeight: '100svh', width: '100vw' });
   document.documentElement.style.height = '100%';
   document.body.style.margin = '0';
