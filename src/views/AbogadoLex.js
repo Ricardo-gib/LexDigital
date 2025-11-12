@@ -1,4 +1,4 @@
-<!-- ============ MIS ABOGADOS LEXDIGITAL ============ -->
+
 <section id="mis-abogados" class="lex-abogados">
   <h2 class="lex-abogados__title">Mis abogados LexDigital</h2>
 
@@ -52,6 +52,4 @@
     </article>
   </div>
 </section>
-<!-- ============ /MIS ABOGADOS LEXDIGITAL ============ -->
-
 
