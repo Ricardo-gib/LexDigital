@@ -110,3 +110,90 @@ body { margin: 0; }
     padding:28px 22px 32px;
   }
 }
+
+/* ====== LEX: Mis abogados (grid + cards) ====== */
+.lex-abogados {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 16px 32px;
+}
+
+.lex-abogados__title {
+  font-weight: 800;
+  font-size: 26px;
+  margin: 0 0 16px;
+  color: #0b2540; /* azul oscuro suave */
+}
+
+.lex-abogados__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 16px;
+}
+@media (max-width: 1024px) {
+  .lex-abogados__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .lex-abogados__grid { grid-template-columns: 1fr; }
+}
+
+.lex-lawyer {
+  background: #ffffff;
+  border: 1.5px solid #E6EEF5;
+  border-radius: 16px;
+  box-shadow: 0 6px 22px rgba(14, 30, 57, 0.06);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lex-lawyer__body {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.lex-lawyer__avatar {
+  width: 56px; height: 56px; border-radius: 50%;
+  object-fit: cover; background: #F3F7FB;
+  border: 1px solid #E6EEF5;
+}
+
+.lex-lawyer__info { min-width: 0; }
+.lex-lawyer__name {
+  margin: 0;
+  font-weight: 800;
+  color: #0b2540;
+  font-size: 16px;
+}
+.lex-lawyer__spec {
+  margin: 2px 0 0;
+  color: #476582;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.lex-btn {
+  display: inline-flex; justify-content: center; align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 9999px; /* pastilla */
+  text-decoration: none;
+  font-weight: 800;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform .06s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.lex-btn--primary {
+  background: #0E2C47; /* azul Lex */
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(14,44,71,.18);
+}
+.lex-btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(14,44,71,.22);
+}
+
