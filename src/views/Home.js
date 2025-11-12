@@ -1,4 +1,3 @@
-// src/views/Home.js
 import { signInWithGoogle, handleRedirectResult, auth } from '../lib/firebase.js';
 
 export default function Home() {
@@ -30,7 +29,7 @@ export default function Home() {
       btn.disabled = true;
       btn.textContent = 'Abriendo Google…';
       msg.textContent = 'Redirigiendo a Google…';
-      await signInWithGoogle(); // Desktop: popup (fallback a redirect). Móvil: redirect.
+      await signInWithGoogle(); 
     } catch (e) {
       console.error('[GoogleSignIn]', e);
       btn.disabled = false;
@@ -39,7 +38,6 @@ export default function Home() {
     }
   });
 
-  // Si regresamos del redirect y ya hay sesión, navega.
   handleRedirectResult().then(() => {
     if (auth.currentUser) {
       location.hash = '#/home';
