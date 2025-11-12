@@ -1,4 +1,4 @@
-export default function AbogadoLex() {
+export default function AbogadoLex() { 
   const el = document.createElement('section');
   el.className = 'screen full-screen';
 
