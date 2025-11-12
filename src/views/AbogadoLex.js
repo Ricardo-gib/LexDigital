@@ -1,54 +1,36 @@
-<section id="mis-abogados" class="lex-abogados">
-  <h2 class="lex-abogados__title">Mis abogados LexDigital</h2>
+// src/views/AbogadoLex.js
+export default function AbogadoLex() {
+  const el = document.createElement('section');
+  el.className = 'screen full-screen';
 
-  <div class="lex-abogados__grid">
-    <!-- Abogada 1 -->
-    <article class="lex-lawyer">
-      <div class="lex-lawyer__body">
-        <img class="lex-lawyer__avatar" src="assets/abogada1.png" alt="Foto abogada 1" loading="lazy">
-        <div class="lex-lawyer__info">
-          <h3 class="lex-lawyer__name">Dra. Maricielo</h3>
-          <p class="lex-lawyer__spec">Laboral</p>
+  el.innerHTML = `
+    <div class="app-card full-card">
+      <header class="app-hero">
+        <div class="avatar large" aria-hidden="true">
+          <img src="assets/icon_1024.png?v=36" alt="Logo LexDigital" />
         </div>
-      </div>
-      <a class="lex-btn lex-btn--primary" href="abogada-1.html">Seleccionar</a>
-    </article>
+        <h1 class="app-title">
+          Abogado<br><span>LexDigital</span>
+        </h1>
+      </header>
 
-    <!-- Abogado 2 -->
-    <article class="lex-lawyer">
-      <div class="lex-lawyer__body">
-        <img class="lex-lawyer__avatar" src="assets/abogado2.png" alt="Foto abogado 2" loading="lazy">
-        <div class="lex-lawyer__info">
-          <h3 class="lex-lawyer__name">Dr. Pérez</h3>
-          <p class="lex-lawyer__spec">Civil</p>
-        </div>
-      </div>
-      <a class="lex-btn lex-btn--primary" href="abogada-2.html">Seleccionar</a>
-    </article>
+      <nav class="menu-list large-menu">
+        <a class="pill-btn" href="#/abogado">Mi Abogado Legal</a>
+        <a class="pill-btn" href="#/contratos">Contratos y Planillas</a>
+        <a class="pill-btn" href="#/cursos">Cursos Legales</a>
+        <a class="pill-btn" href="#/planes">Planes y Precios</a>
+      </nav>
+    </div>
+  `;
 
-    <!-- Abogada 3 -->
-    <article class="lex-lawyer">
-      <div class="lex-lawyer__body">
-        <img class="lex-lawyer__avatar" src="assets/abogada3.png" alt="Foto abogada 3" loading="lazy">
-        <div class="lex-lawyer__info">
-          <h3 class="lex-lawyer__name">Dra. García</h3>
-          <p class="lex-lawyer__spec">Penal</p>
-        </div>
-      </div>
-      <a class="lex-btn lex-btn--primary" href="abogada-3.html">Seleccionar</a>
-    </article>
+  // asegurar viewport completo (alto y ancho) en móviles/incógnito
+  Object.assign(el.style, { height: '100svh', minHeight: '100svh', width: '100vw' });
+  document.documentElement.style.height = '100%';
+  document.body.style.margin = '0';
+  document.body.style.padding = '0';
+  document.body.style.height = '100svh';
+  document.body.style.width = '100vw';
 
-    <!-- Abogado 4 -->
-    <article class="lex-lawyer">
-      <div class="lex-lawyer__body">
-        <img class="lex-lawyer__avatar" src="assets/abogado4.png" alt="Foto abogado 4" loading="lazy">
-        <div class="lex-lawyer__info">
-          <h3 class="lex-lawyer__name">Dr. Ramírez</h3>
-          <p class="lex-lawyer__spec">Empresarial</p>
-        </div>
-      </div>
-      <a class="lex-btn lex-btn--primary" href="abogada-4.html">Seleccionar</a>
-    </article>
-  </div>
-</section>
+  return el;
+}
 
