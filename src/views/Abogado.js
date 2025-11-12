@@ -9,57 +9,53 @@ export default function Abogado() {
       
         <div class="card">
           <div class="card-body">
-            <img class="card-img" src="assets/abogada1.png" alt="Foto abogada 1" style="width:64px;height:64px;border-radius:50%;object-fit:cover">
+            <img class="card-img" src="assets/abogada_192.png" alt="Foto Dra. Maylee" style="width:64px;height:64px;border-radius:50%;object-fit:cover">
             <div class="card-info">
-              <h3>Dra. Maricielo</h3>
+              <h3>Dra. Maylee De La Cruz</h3>
               <p class="text-muted">Laboral</p>
             </div>
           </div>
           <div style="display:flex;gap:8px;margin-top:12px">
-            <a class="btn primary" href="https://wa.me/51999999999?text=Hola%20necesito%20orientación" target="_blank">WhatsApp</a>
-            <a class="btn" href="#abogada-1-videollamada">Videollamada</a>
+            <a class="btn primary" href="#/dra-maylee">Seleccionar</a>
           </div>
         </div>
 
         <div class="card">
           <div class="card-body">
-            <img class="card-img" src="assets/abogado2.png" alt="Foto abogado 2" style="width:64px;height:64px;border-radius:50%;object-fit:cover">
+            <img class="card-img" src="assets/abogada_192.png" alt="Foto Dra. Laura Romero" style="width:64px;height:64px;border-radius:50%;object-fit:cover">
             <div class="card-info">
-              <h3>Dr. Pérez</h3>
+              <h3>Dra. Laura Romero</h3>
               <p class="text-muted">Civil</p>
             </div>
           </div>
           <div style="display:flex;gap:8px;margin-top:12px">
-            <a class="btn primary" href="https://wa.me/51999999999?text=Hola%20necesito%20orientación" target="_blank">WhatsApp</a>
-            <a class="btn" href="#abogado-2-videollamada">Videollamada</a>
+            <a class="btn primary" href="#/dra-laura">Seleccionar</a>
           </div>
         </div>
 
         <div class="card">
           <div class="card-body">
-            <img class="card-img" src="assets/abogada3.png" alt="Foto abogada 3" style="width:64px;height:64px;border-radius:50%;object-fit:cover">
+            <img class="card-img" src="assets/abogado_192.png" alt="Foto Dr. Franklin Vicente" style="width:64px;height:64px;border-radius:50%;object-fit:cover">
             <div class="card-info">
-              <h3>Dra. García</h3>
+              <h3>Dr. Franklin Vicente</h3>
               <p class="text-muted">Penal</p>
             </div>
           </div>
           <div style="display:flex;gap:8px;margin-top:12px">
-            <a class="btn primary" href="https://wa.me/51999999999?text=Hola%20necesito%20orientación" target="_blank">WhatsApp</a>
-            <a class="btn" href="#abogada-3-videollamada">Videollamada</a>
+            <a class="btn primary" href="#/dr-franklin">Seleccionar</a>
           </div>
         </div>
 
         <div class="card">
           <div class="card-body">
-            <img class="card-img" src="assets/abogado4.png" alt="Foto abogado 4" style="width:64px;height:64px;border-radius:50%;object-fit:cover">
+            <img class="card-img" src="assets/abogada_192.png" alt="Foto Dra. Maricielo Garcia" style="width:64px;height:64px;border-radius:50%;object-fit:cover">
             <div class="card-info">
-              <h3>Dr. Ramírez</h3>
+              <h3>Dra. Maricielo Garcia</h3>
               <p class="text-muted">Empresarial</p>
             </div>
           </div>
           <div style="display:flex;gap:8px;margin-top:12px">
-            <a class="btn primary" href="https://wa.me/51999999999?text=Hola%20necesito%20orientación" target="_blank">WhatsApp</a>
-            <a class="btn" href="#abogado-4-videollamada">Videollamada</a>
+            <a class="btn primary" href="#/dra-maricielo">Seleccionar</a>
           </div>
         </div>
       </div>
@@ -69,4 +65,3 @@ export default function Abogado() {
   `;
   return { html };
 }
-
