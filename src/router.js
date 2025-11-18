@@ -6,10 +6,10 @@ import Abogado from './views/Abogado.js';
 import Contratos from './views/Contratos.js';
 import Cursos from './views/Cursos.js';
 import Planes from './views/Planes.js';
-import Maylee from './views/Dra.Maylee.js';
-import Laura from './views/Dra.Laura.js';
-import Franklin from './views/Dr.Franklin.js';
-import Maricielo from './views/Dra.Maricielo.js';
+import Maylee from './views/Maylee.js';
+import Laura from './views/Laura.js';
+import Franklin from './views/Franklin.js';
+import Maricielo from './views/Maricielo.js';
 
 const routes = {
   '/': Home, 'home': Home, '/home': Home, 'inicio': Home, '/inicio': Home,
