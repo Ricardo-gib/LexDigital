@@ -6,20 +6,33 @@ import Abogado from './views/Abogado.js';
 import Contratos from './views/Contratos.js';
 import Cursos from './views/Cursos.js';
 import Planes from './views/Planes.js';
-import Maylee from './views/Dra. Maylee.js';
-import Laura from './views/Dra. Laura.js';
-import Franklin from './views/Dr. Franklin.js';
-import Maricielo from './views/Dra. Maricielo.js';
+
+// ❌ Antes tenían espacio en el nombre del archivo
+// import Maylee from './views/Dra. Maylee.js';
+// import Laura from './views/Dra. Laura.js';
+// import Franklin from './views/Dr. Franklin.js';
+// import Maricielo from './views/Dra. Maricielo.js';
+
+// ✅ Deben ser exactamente como se llaman los archivos
+import Maylee from './views/Dra.Maylee.js';
+import Laura from './views/Dra.Laura.js';
+import Franklin from './views/Dr.Franklin.js';
+import Maricielo from './views/Dra.Maricielo.js';
 
 const routes = {
   '/': Home, 'home': Home, '/home': Home, 'inicio': Home, '/inicio': Home,
+
   'login': Login, '/login': Login,
   'register': Register, '/register': Register,
+
   'abogadolex': AbogadoLex, '/abogadolex': AbogadoLex,
   'abogado': Abogado, '/abogado': Abogado,
+
   'contratos': Contratos, '/contratos': Contratos,
   'cursos': Cursos, '/cursos': Cursos,
   'planes': Planes, '/planes': Planes,
+
+  // 👇 Rutas para cada doctor(a)
   'dra-maylee': Maylee, '/dra-maylee': Maylee,
   'dra-laura': Laura, '/dra-laura': Laura,
   'dr-franklin': Franklin, '/dr-franklin': Franklin,
@@ -37,7 +50,11 @@ function pickView(path) {
 }
 
 function renderTo(mount, out) {
-  if (out instanceof Node) { mount.replaceChildren(out); return; }
+  if (out instanceof Node) {
+    mount.replaceChildren(out);
+    return;
+  }
+
   if (out && typeof out === 'object' && 'html' in out) {
     const wrap = document.createElement('div');
     wrap.innerHTML = out.html;
@@ -45,12 +62,14 @@ function renderTo(mount, out) {
     if (typeof out.onMount === 'function') out.onMount();
     return;
   }
+
   if (typeof out === 'string') {
     const wrap = document.createElement('div');
     wrap.innerHTML = out;
     mount.replaceChildren(...wrap.childNodes);
     return;
   }
+
   mount.textContent = '[Router] Vista inválida.';
 }
 
@@ -58,6 +77,7 @@ export default function router(navigateTo) {
   const mount = document.getElementById('app');
   const path = normalizeRoute(navigateTo ?? location.hash);
   console.log('[ROUTER] path ->', path);
+
   try {
     const View = pickView(path);
     const out = View();
@@ -73,4 +93,4 @@ Ruta: ${path}
 }
 
 window.addEventListener('hashchange', () => router());
-window.addEventListener('DOMContentLoaded', () => router('/'));
+window.addEventListener('DOMContentLoaded', () => router());
