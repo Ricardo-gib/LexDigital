@@ -10,21 +10,17 @@ import Maylee from './views/Dra.Maylee.js';
 import Laura from './views/Dra.Laura.js';
 import Franklin from './views/Dr.Franklin.js';
 import Maricielo from './views/Dra.Maricielo.js';
-
 const routes = {
+  
   '/': Home, 'home': Home, '/home': Home, 'inicio': Home, '/inicio': Home,
-
   'login': Login, '/login': Login,
   'register': Register, '/register': Register,
-
   'abogadolex': AbogadoLex, '/abogadolex': AbogadoLex,
   'abogado': Abogado, '/abogado': Abogado,
-
   'contratos': Contratos, '/contratos': Contratos,
   'cursos': Cursos, '/cursos': Cursos,
   'planes': Planes, '/planes': Planes,
 
-  // 👇 Rutas para cada doctor(a)
   'dra-maylee': Maylee, '/dra-maylee': Maylee,
   'dra-laura': Laura, '/dra-laura': Laura,
   'dr-franklin': Franklin, '/dr-franklin': Franklin,
@@ -84,5 +80,7 @@ Ruta: ${path}
   }
 }
 
+
 window.addEventListener('hashchange', () => router());
 window.addEventListener('DOMContentLoaded', () => router());
+
