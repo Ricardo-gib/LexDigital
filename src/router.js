@@ -6,14 +6,6 @@ import Abogado from './views/Abogado.js';
 import Contratos from './views/Contratos.js';
 import Cursos from './views/Cursos.js';
 import Planes from './views/Planes.js';
-
-// ❌ Antes tenían espacio en el nombre del archivo
-// import Maylee from './views/Dra. Maylee.js';
-// import Laura from './views/Dra. Laura.js';
-// import Franklin from './views/Dr. Franklin.js';
-// import Maricielo from './views/Dra. Maricielo.js';
-
-// ✅ Deben ser exactamente como se llaman los archivos
 import Maylee from './views/Dra.Maylee.js';
 import Laura from './views/Dra.Laura.js';
 import Franklin from './views/Dr.Franklin.js';
