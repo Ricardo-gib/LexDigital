@@ -1,0 +1,199 @@
+/* ===== RESET SUAVE PARA VIEWPORT ===== */
+html, body { height: 100%; }
+body { margin: 0; }
+
+/* ===== Home (Landing) – versión final (igual que antes) ===== */
+.welcome-hero{ max-width: 980px; margin: 0 auto; padding: 0 16px 48px; }
+.hero-top{
+  position: relative; min-height: 62vh; display: grid; place-items: center;
+  grid-template-rows: auto auto auto; padding: 52px 20px 148px;
+  border-radius: 28px; background: linear-gradient(180deg,#0f2f49 0%,#133a55 100%);
+  color:#fff; box-shadow: 0 10px 28px rgba(15,47,73,.22); overflow: hidden; z-index: 0;
+}
+.hero-logo{ width:148px; height:148px; border-radius:999px; background-size:cover; background-position:center; box-shadow:0 12px 28px rgba(0,0,0,.28); z-index:1; }
+.brand{ margin:14px 0 6px; font-weight:800; letter-spacing:.2px; line-height:1.1; font-size:clamp(30px,6.2vw,44px); z-index:1; }
+.brand .lex{ color:#fff } .brand .accent{ color:#2bb7a7 }
+.tagline{ margin:0; text-align:center; color:rgba(255,255,255,.96); font-size:clamp(16px,3.8vw,20px); line-height:1.45; padding:0 12px; max-width:720px; z-index:1; }
+.hero-card{
+  max-width:560px; width:min(92%,560px); margin:28px auto 0; background:#fff; border-radius:22px;
+  padding:24px 18px 18px; box-shadow:0 18px 44px rgba(16,24,40,.16); display:grid; gap:12px; z-index:2;
+}
+.btn{ width:100%; border-radius:999px; padding:14px 18px; border:2px solid #0f2f49; background:#fff; color:#0f2f49;
+  font-weight:700; font-size:clamp(15px,4.2vw,18px); text-align:center; text-decoration:none;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.btn.primary{ background:#0f2f49; color:#fff; border-color:#0f2f49; }
+.btn:hover{ transform:translateY(-1px); box-shadow:0 6px 16px rgba(15,47,73,.14); }
+.link-invite{ justify-self:center; margin-top:6px; color:#0a66ff; text-decoration:underline; font-weight:600; font-size:15.5px; }
+@media (min-width:900px){
+  .hero-top{ min-height:58vh; padding:72px 20px 160px; }
+  .hero-logo{ width:164px; height:164px; }
+  .hero-card{ margin-top:20px; padding:26px 20px 22px; }
+}
+
+/* ===== Base de vistas tipo app ===== */
+.screen{ max-width:980px; margin:0 auto; padding:24px 16px 56px; }
+.app-card{
+  max-width:520px; margin:0 auto; background:#fff; border-radius:22px;
+  box-shadow:0 18px 44px rgba(16,24,40,.12); padding:22px;
+}
+.app-hero{ text-align:center; padding:18px 8px 12px; }
+.app-hero .avatar{
+  width:84px; height:84px; margin:0 auto 8px; color:#0f2f49; background:#0f2f49; border-radius:999px;
+  display:grid; place-items:center; box-shadow: inset 0 0 0 6px rgba(255,255,255,.92), 0 8px 18px rgba(0,0,0,.1);
+}
+.app-title{ margin:6px 0 12px; font-size:clamp(22px,5vw,34px); line-height:1.15; color:#0f2f49; font-weight:800; }
+.app-title span{ color:#2bb7a7 }
+.menu-list{ display:grid; gap:14px; padding:8px 4px 4px; }
+.pill-btn{
+  display:block; width:100%; padding:14px 18px; border-radius:999px; background:#fff; border:2px solid #0f2f49;
+  color:#0f2f49; font-weight:700; text-align:center; text-decoration:none;
+  transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+}
+.pill-btn:hover{ transform:translateY(-1px); box-shadow:0 8px 18px rgba(15,47,73,.12) }
+
+/* ===== Abogado LexDigital: FULLSCREEN EDGE-TO-EDGE ===== */
+.full-screen{
+  display:flex; align-items:flex-start; justify-content:center;
+  min-height:100svh; width:100vw; padding:0; margin:0; background:#f7fafc;
+  max-width:none; /* sin columnas */
+}
+.full-card{
+  /* Ocupa **todo el ancho** y **todo el alto** */
+  width:100vw; max-width:none; min-height:100svh;
+  border-radius:0; box-shadow:none; background:#fff;
+  display:flex; flex-direction:column; align-items:stretch; justify-content:flex-start;
+  /* safe areas y respiración */
+  padding: calc(14px + env(safe-area-inset-top)) 16px calc(22px + env(safe-area-inset-bottom));
+}
+.app-hero .avatar.large{
+  width: clamp(160px, 34vw, 220px);
+  height: clamp(160px, 34vw, 220px);
+  margin: 6px auto 14px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 6px rgba(43,183,167,0.25);
+}
+.app-hero .avatar.large img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Título y menú fluidos */
+.full-card .app-title{
+  margin: 2px 0 14px;
+  font-size: clamp(22px, 6vw, 34px);
+}
+.large-menu{
+  display:grid;
+  gap: clamp(12px, 3.8vw, 18px);
+  margin-top: 6px;
+}
+
+/* Botones fluidos y táctiles */
+.full-card .pill-btn{
+  padding: clamp(12px, 3.6vw, 16px) 18px;
+  font-size: clamp(15px, 4.4vw, 18px);
+  border-width: 2px;
+  min-height: clamp(44px, 10vw, 54px);
+}
+.full-card .pill-btn:hover{
+  background:#0f2f49; color:#fff; transform: translateY(-2px);
+}
+
+/* En pantallas grandes, vuelve al look de tarjeta centrada */
+@media (min-width: 900px){
+  .full-screen{ align-items:center; }
+  .full-card{
+    width:100%; max-width: 520px; min-height:auto;
+    border-radius:28px; box-shadow:0 25px 55px rgba(0,0,0,.14);
+    padding:28px 22px 32px;
+  }
+}
+
+/* ====== LEX: Mis abogados (grid + cards) ====== */
+.lex-abogados {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 16px 32px;
+}
+
+.lex-abogados__title {
+  font-weight: 800;
+  font-size: 26px;
+  margin: 0 0 16px;
+  color: #0b2540; /* azul oscuro suave */
+}
+
+.lex-abogados__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 16px;
+}
+@media (max-width: 1024px) {
+  .lex-abogados__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .lex-abogados__grid { grid-template-columns: 1fr; }
+}
+
+.lex-lawyer {
+  background: #ffffff;
+  border: 1.5px solid #E6EEF5;
+  border-radius: 16px;
+  box-shadow: 0 6px 22px rgba(14, 30, 57, 0.06);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lex-lawyer__body {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.lex-lawyer__avatar {
+  width: 56px; height: 56px; border-radius: 50%;
+  object-fit: cover; background: #F3F7FB;
+  border: 1px solid #E6EEF5;
+}
+
+.lex-lawyer__info { min-width: 0; }
+.lex-lawyer__name {
+  margin: 0;
+  font-weight: 800;
+  color: #0b2540;
+  font-size: 16px;
+}
+.lex-lawyer__spec {
+  margin: 2px 0 0;
+  color: #476582;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.lex-btn {
+  display: inline-flex; justify-content: center; align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 9999px; /* pastilla */
+  text-decoration: none;
+  font-weight: 800;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform .06s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.lex-btn--primary {
+  background: #0E2C47; /* azul Lex */
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(14,44,71,.18);
+}
+.lex-btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(14,44,71,.22);
+}
+
